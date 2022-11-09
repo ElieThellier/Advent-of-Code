@@ -1,0 +1,19 @@
+{
+    "name": "aoc-2020",
+    "version": "1.0.0",
+    "description": "JavaScript for Advent of Code 2020",
+    "main": "day1.js",
+    "type": "module",
+    "scripts": {
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "day1": "node day1.js"
+    },
+    "devDependencies": {
+        "eslint": "^8.27.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.7.1"
+    },
+    "author": "pem",
+    "license": "MIT"
+}
