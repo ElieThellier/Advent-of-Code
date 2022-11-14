@@ -16,11 +16,12 @@ input2.sort((a, b) => a - b);
 
 /*
 // solution naive pour la part 2 (pour la part 1, enlever une boucle)
-for (let i = 0; i < input2.length; i++) {
+outerloop: for (let i = 0; i < input2.length; i++) {
     for (let j = 0; j < input2.length; j++) {
         for (let k = 0; k < input2.length; k++) {
             if (input2[i] + input2[j] + input2[k] == 2020) {
                 console.log(input2[i] * input2[j] * input2[k]);
+                break outerloop;
             }
         }
     }
