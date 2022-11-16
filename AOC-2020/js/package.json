@@ -1,13 +1,14 @@
 {
-    "name": "aoc-2020",
+    "name": "aoc-2020-js",
     "version": "1.0.0",
     "description": "JavaScript for Advent of Code 2020",
-    "main": "day1.js",
+    "main": "index.js",
     "type": "module",
     "scripts": {
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
-        "day1": "node day1.js"
+        "day01": "node ./day01/day01.js",
+        "day02": "node ./day02/day02.js"
     },
     "devDependencies": {
         "eslint": "^8.27.0",
