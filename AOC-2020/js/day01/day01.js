@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 
-const start = Date.now();
+console.time("Execution Time");
 
 const exemple01 = readFileSync("./day01/inputs01/exemple01.in", "utf-8")
     .trim()
@@ -53,5 +53,18 @@ outerloop: for (let i = 0; i < puzzle01.length; i++) {
     }
 }
 
-const fin = Date.now() - start;
-console.log(fin);
+/*
+// Other solution with combinaisons (from colinfay.me)
+
+// doing combinaisons :
+var puzzle01_cop = puzzle01;
+var comb = puzzle01.flatMap((i) => puzzle01_cop.map((j) => [i, j]));
+// getting the 2020 :
+var twentytwenty = comb.filter((x) => x[0] + x[1] === 2020);
+// solution :
+console.log(twentytwenty);
+var sol = twentytwenty.reduce((y) => y[0] * y[1]);
+console.log(sol);
+*/
+
+console.timeEnd("Execution Time");

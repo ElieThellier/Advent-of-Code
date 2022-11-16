@@ -2,7 +2,7 @@
 
 import { readFileSync } from "fs";
 
-const start = Date.now();
+console.time("Execution Time");
 
 const exemple01 = readFileSync("./day01/inputs01/exemple01.in", "utf-8")
     .trim()
@@ -55,5 +55,4 @@ outerloop: for (let i = 0; i < puzzle01.length; i++) {
     }
 }
 
-const fin = Date.now() - start;
-console.log(fin);
+console.timeEnd("Execution Time");
