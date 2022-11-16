@@ -19,7 +19,7 @@ input2.sort((a, b) => a - b);
 outerloop: for (let i = 0; i < input2.length; i++) {
     for (let j = 0; j < input2.length; j++) {
         for (let k = 0; k < input2.length; k++) {
-            if (input2[i] + input2[j] + input2[k] == 2020) {
+            if (input2[i] + input2[j] + input2[k] === 2020) {
                 console.log(input2[i] * input2[j] * input2[k]);
                 break outerloop;
             }
@@ -32,8 +32,8 @@ outerloop: for (let i = 0; i < input2.length; i++) {
 // utilisation de filter part 1
 for (let i = 0; i < input2.length; i++) {
     let goal = 2020 - input2[i];
-    let filtered = input2.filter((x) => x == goal);
-    if (filtered.length == 1) {
+    let filtered = input2.filter((x) => x === goal);
+    if (filtered.length === 1) {
         console.log(filtered[0] * input2[i]);
         break;
     }
@@ -45,8 +45,8 @@ outerloop: for (let i = 0; i < input2.length; i++) {
     let filtered1 = input2.filter((x) => x <= 2020 - input2[i]);
     for (let j = 0; j < filtered1.length; j++) {
         let goal = 2020 - input2[i] - filtered1[j];
-        let filtered2 = filtered1.filter((x) => x == goal);
-        if (filtered2.length == 1) {
+        let filtered2 = filtered1.filter((x) => x === goal);
+        if (filtered2.length === 1) {
             console.log(filtered2[0] * input2[i] * filtered1[j]);
             break outerloop;
         }
