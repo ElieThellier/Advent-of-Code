@@ -19,7 +19,8 @@ const max = (line: string) => parseInt(line.split(" ")[0].split("-")[1]);
 const char = (line: string) => line.split(" ")[1][0];
 const word = (line: string) => line.split(" ")[2];
 
-let valid: number[] = [];
+// PART 1 :
+let valid1: number[] = [];
 puzzle02.forEach((line: string) => {
     let temp = word(line);
     let charCount = 0;
@@ -28,12 +29,36 @@ puzzle02.forEach((line: string) => {
         charCount++;
     }
     if (charCount >= min(line) && charCount <= max(line)) {
-        valid.push(1);
+        valid1.push(1);
     } else {
-        valid.push(0);
+        valid1.push(0);
     }
 });
-console.log(valid);
-console.log(valid.reduce((acc, val) => acc + val, 0));
+console.log(valid1);
+console.log(valid1.reduce((acc, val) => acc + val, 0));
+
+// PART 2 :
+let valid2: number[] = [];
+puzzle02.forEach((line: string) => {
+    let temp = word(line);
+    let divisedTemp = temp.split("");
+    if (
+        divisedTemp[min(line) - 1] === char(line) ||
+        divisedTemp[max(line) - 1] === char(line)
+    ) {
+        if (
+            divisedTemp[min(line) - 1] === char(line) &&
+            divisedTemp[max(line) - 1] === char(line)
+        ) {
+            valid2.push(0);
+        } else {
+            valid2.push(1);
+        }
+    } else {
+        valid2.push(0);
+    }
+});
+console.log(valid2);
+console.log(valid2.reduce((acc, val) => acc + val, 0));
 
 console.timeEnd("Execution Time");
