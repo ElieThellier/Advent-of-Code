@@ -8,7 +8,8 @@
         "format:write": "prettier --write .",
         "test": "echo \"Error: no test specified\" && exit 1",
         "day01": "ts-node ./day01/day01.ts",
-        "day02": "ts-node ./day02/day02.ts"
+        "day02": "ts-node ./day02/day02.ts",
+        "day03": "ts-node ./day03/day03.ts"
     },
     "author": "ElieThellier",
     "license": "ISC",

@@ -24,6 +24,7 @@ let valid1: number[] = [];
 puzzle02.forEach((line: string) => {
     let temp = word(line);
     let charCount = 0;
+    // le comptage de charactère peut être fait avec un reduce
     while (temp.indexOf(char(line)) > -1) {
         temp = temp.replace(char(line), "");
         charCount++;
@@ -34,7 +35,7 @@ puzzle02.forEach((line: string) => {
         valid1.push(0);
     }
 });
-console.log(valid1);
+//console.log(valid1);
 console.log(valid1.reduce((acc, val) => acc + val, 0));
 
 // PART 2 :
@@ -42,6 +43,7 @@ let valid2: number[] = [];
 puzzle02.forEach((line: string) => {
     let temp = word(line);
     let divisedTemp = temp.split("");
+    // le ou 'strict' peut se faire avec ^
     if (
         divisedTemp[min(line) - 1] === char(line) ||
         divisedTemp[max(line) - 1] === char(line)
@@ -58,7 +60,7 @@ puzzle02.forEach((line: string) => {
         valid2.push(0);
     }
 });
-console.log(valid2);
+//console.log(valid2);
 console.log(valid2.reduce((acc, val) => acc + val, 0));
 
 console.timeEnd("Execution Time");
