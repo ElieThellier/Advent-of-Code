@@ -28,6 +28,8 @@ const topKmaxCalories = (numberKofElves: number) => (inputs: string[]) =>
         )
     );
 
+topKmaxCalories(1)(inputs);
+
 const numberKofElves = 3;
 topKmaxCalories(numberKofElves)(inputs);
 
