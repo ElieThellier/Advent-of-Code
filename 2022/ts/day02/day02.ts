@@ -26,7 +26,7 @@ let getOpponents = (input: string[]) => input.map((line) => line[0]);
  * @param input is the input parsed
  * @returns all of your choices
  */
-let getMines = (input: string[]) => input.map((line) => line[2]); // or objectives
+let getMines = (input: string[]) => input.map((line) => line[2]); // or Objectives for part2
 
 /** get the score of one round
  *
