@@ -8,8 +8,8 @@ const parser = (input: string) =>
         .trim()
         .split("\n")
         .map((pair) => pair.split(","))
-        .map((elve) =>
-            elve.flatMap((minmax) => minmax.split("-")).map((x) => parseInt(x))
+        .map((elf) =>
+            elf.flatMap((minmax) => minmax.split("-")).map((x) => parseInt(x))
         );
 
 const partOne = (input: string) => {
