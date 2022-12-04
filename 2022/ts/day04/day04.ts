@@ -30,12 +30,8 @@ const partTwo = (input: string) => {
     let countOverlapping: number = 0;
     minsMaxsByPairs.forEach((pair) => {
         if (
-            (pair[0] <= pair[2] && pair[1] >= pair[3]) ||
-            (pair[0] >= pair[2] && pair[1] <= pair[3]) ||
-            (pair[0] <= pair[2] && pair[1] >= pair[2]) ||
-            (pair[0] >= pair[2] && pair[1] <= pair[2]) ||
-            (pair[0] <= pair[3] && pair[1] >= pair[3]) ||
-            (pair[0] >= pair[3] && pair[1] <= pair[3])
+            (pair[0] <= pair[3] && pair[1] >= pair[2]) ||
+            (pair[2] <= pair[1] && pair[3] >= pair[0])
         )
             countOverlapping++;
     });
