@@ -2,6 +2,9 @@ import * as fs from "fs";
 
 console.time("\nExecution Time");
 
+const parser = (input: string) =>
+    fs.readFileSync(`./day03/inputs/${input}.in`, "utf-8").trim().split("\n");
+
 const itemToPriority = (item: string) => {
     return item.charCodeAt(0) >= 97
         ? item.charCodeAt(0) - 96
@@ -9,10 +12,7 @@ const itemToPriority = (item: string) => {
 };
 
 const partOne = (input: string) => {
-    let rucksacks: string[] = fs
-        .readFileSync(`./day03/inputs/${input}.in`, "utf-8")
-        .trim()
-        .split("\n");
+    let rucksacks: string[] = parser(input);
     let firstCompartiment: string[][] = rucksacks.map((rucksack) =>
         rucksack.slice(0, Math.floor(rucksack.length / 2)).split("")
     );
@@ -35,10 +35,7 @@ const partOne = (input: string) => {
 };
 
 const partTwo = (input: string) => {
-    let rucksacks: string[] = fs
-        .readFileSync(`./day03/inputs/${input}.in`, "utf-8")
-        .trim()
-        .split("\n");
+    let rucksacks: string[] = parser(input);
     let groups = new Array();
     for (let i = 0; i < rucksacks.length; i += 3) {
         groups.push([
