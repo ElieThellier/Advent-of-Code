@@ -15,7 +15,7 @@ type Tree = {
     nBot: number;
     nLeft: number;
     nRight: number;
-    neighbors: number;
+    neighbors: number; // = scenic score
 };
 
 const toTree = (x: string) => {
@@ -32,94 +32,56 @@ const toTree = (x: string) => {
     return res;
 };
 
-const changeTreeVisibleState = (line: Tree[], row: boolean) => {
-    line.forEach((tree, index) => {
-        if (index == 0) {
-            row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
-        } else {
-            let slicedLine = line.slice(0, index);
-            if (
-                slicedLine.filter((tree) => line[index].height > tree.height)
-                    .length == index
-            ) {
-                row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
-            }
-        }
-    });
-    line.reverse().forEach((tree, index) => {
-        if (index == 0) {
-            row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
-        } else {
-            let slicedLine = line.slice(0, index);
-            if (
-                slicedLine.filter((tree) => line[index].height > tree.height)
-                    .length == index
-            ) {
-                row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
-            }
-        }
-    });
-    return line.reverse();
-};
-
-const changeNeighbors = (line: Tree[], row: boolean) => {
+const changeTreeParameters = (line: Tree[], row: boolean) => {
     let stop = false;
     line.forEach((tree, index) => {
-        if (index != 0) {
+        if (index == 0) {
+            row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
+        } else {
             let slicedLine = line.slice(0, index).reverse();
-            if (row) {
-                for (let i = 0; i < slicedLine.length; i++) {
-                    if (!stop) {
-                        tree.nLeft++;
-                        if (slicedLine[i].height >= tree.height) {
-                            stop = true;
-                        }
-                    }
-                }
-                stop = false;
-            } else {
-                for (let i = 0; i < slicedLine.length; i++) {
-                    if (!stop) {
-                        tree.nTop++;
-                        if (slicedLine[i].height >= tree.height) {
-                            stop = true;
-                        }
-                    }
-                }
-                stop = false;
+            if (
+                slicedLine.filter((tree) => line[index].height > tree.height)
+                    .length == index
+            ) {
+                row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
             }
+            for (let i = 0; i < slicedLine.length; i++) {
+                if (!stop) {
+                    row ? tree.nLeft++ : tree.nTop++;
+                    if (slicedLine[i].height >= tree.height) {
+                        stop = true;
+                    }
+                }
+            }
+            stop = false;
         }
     });
     line.reverse().forEach((tree, index) => {
-        if (index != 0) {
+        if (index == 0) {
+            row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
+        } else {
             let slicedLine = line.slice(0, index).reverse();
-            if (row) {
-                for (let i = 0; i < slicedLine.length; i++) {
-                    if (!stop) {
-                        tree.nRight++;
-                        if (slicedLine[i].height >= tree.height) {
-                            stop = true;
-                        }
-                    }
-                }
-                stop = false;
-            } else {
-                for (let i = 0; i < slicedLine.length; i++) {
-                    if (!stop) {
-                        tree.nBot++;
-                        if (slicedLine[i].height >= tree.height) {
-                            stop = true;
-                        }
-                    }
-                }
-                stop = false;
+            if (
+                slicedLine.filter((tree) => line[index].height > tree.height)
+                    .length == index
+            ) {
+                row ? (tree.isVisibleRow = true) : (tree.isVisibleCol = true);
             }
+            for (let i = 0; i < slicedLine.length; i++) {
+                if (!stop) {
+                    row ? tree.nRight++ : tree.nBot++;
+                    if (slicedLine[i].height >= tree.height) {
+                        stop = true;
+                    }
+                }
+            }
+            stop = false;
         }
     });
     return line.reverse();
 };
 
-const partOne = (input: string) => {
+const partsOneAndTwo = (input: string) => {
     let grid = fs
         .readFileSync(`./day08/inputs/${input}.in`, "utf-8")
         .split("\n")
@@ -128,29 +90,24 @@ const partOne = (input: string) => {
 
     // change visibles status of trees for rows than for cols (I transpose the grid than use the algo for rows for cols)
     for (let i = 1; i < len - 1; i++) {
-        grid[i] = changeTreeVisibleState(grid[i], true);
-        grid[i] = changeNeighbors(grid[i], true);
+        grid[i] = changeTreeParameters(grid[i], true);
     }
     // transpose the grid
     grid = grid[0].map((_, colIndex) => grid.map((row) => row[colIndex]));
     for (let i = 1; i < len - 1; i++) {
-        grid[i] = changeTreeVisibleState(grid[i], false);
-        grid[i] = changeNeighbors(grid[i], false);
+        grid[i] = changeTreeParameters(grid[i], false);
     }
 
     // all the trees on the sides are visible (perimeter)
     let visibleTree = len * 2 + (len - 2) * 2;
     // if a tree on the inside is visible by row OR by col than it is visible
+
+    // initiate result part2
+    let maxNeighbors = 0;
     for (let i = 1; i < len - 1; i++) {
         for (let j = 1; j < len - 1; j++) {
             (grid[i][j].isVisibleCol || grid[i][j].isVisibleRow) &&
                 visibleTree++;
-        }
-    }
-
-    let maxNeighbors = 0;
-    for (let i = 1; i < len - 1; i++) {
-        for (let j = 1; j < len - 1; j++) {
             grid[i][j].neighbors =
                 grid[i][j].nTop *
                 grid[i][j].nLeft *
@@ -161,10 +118,21 @@ const partOne = (input: string) => {
             }
         }
     }
-    console.log(maxNeighbors);
-    return visibleTree;
+
+    console.log(
+        `\nPART 1 : _${visibleTree}_ trees are visible from outside the grid for the input "${input}"`
+    );
+
+    console.log(
+        `\nPART 2 : The highest scenic score possible for any tree for the input "${input}" is equal to _${maxNeighbors}_`
+    );
 };
 
-["exemple", "puzzle"].forEach((input) =>
-    console.log(`PART 1 : input "${input}" visible trees = _${partOne(input)}_`)
-);
+["exemple", "puzzle"].forEach((input) => {
+    console.log(
+        `\nAlgorithm for both parts was executed in ${timer(
+            partsOneAndTwo,
+            input
+        )} (for the input ${input} and with prints included)\n`
+    );
+});
