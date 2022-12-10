@@ -7,14 +7,14 @@ const timer = (script: (i: string) => any, input: string) => {
     return `${(end - start).toFixed(2)} ms`;
 };
 
-const partOne = (input: string) => {
+const partsOneAndTwo = (input: string) => {
     const program = fs
         .readFileSync(`./day10/inputs/${input}.in`, "utf-8")
         .split("\n");
     let cycle = [0];
     let X = [1];
     let signalStrenght = 0;
-    program.forEach((instruct, index) => {
+    program.forEach((instruct) => {
         if (instruct[0] === "a") {
             cycle.push(cycle[cycle.length - 1] + 1);
             X.push(X[X.length - 1]);
@@ -30,17 +30,22 @@ const partOne = (input: string) => {
             signalStrenght += cycle[index] * X[index - 1];
         }
     });
-    console.log(signalStrenght);
+    console.log(
+        `PART 1 "${input}" : The signal strenght is equal to _${signalStrenght}_`
+    );
 
+    // PART 2
     let CRT = [];
-    for (let y = 0; y < 6; y++) {
+    const height = 6;
+    const width = 40;
+    for (let y = 0; y < height; y++) {
         let temp: string[] = [];
-        for (let x = 0; x < 40; x++) {
-            let i = x + 40 * y;
+        for (let x = 0; x < width; x++) {
+            let i = x + width * y;
             if (
-                X[i] - 1 === cycle[i] % 40 ||
-                X[i] === cycle[i] % 40 ||
-                X[i] + 1 === cycle[i] % 40
+                X[i] - 1 === cycle[i] % width ||
+                X[i] === cycle[i] % width ||
+                X[i] + 1 === cycle[i] % width
             ) {
                 temp.push("#");
             } else {
@@ -49,7 +54,11 @@ const partOne = (input: string) => {
         }
         CRT.push(temp.join(""));
     }
+    console.log(
+        `PART 2 "${input}" : The rendered image given by the program is :`
+    );
     console.log(CRT);
 };
 
-partOne("puzzle");
+console.log(`\nBoth parts executed in ${timer(partsOneAndTwo, "exemple2")}\n`);
+console.log(`\nBoth parts executed in ${timer(partsOneAndTwo, "puzzle")}\n`);
