@@ -31,6 +31,25 @@ const partOne = (input: string) => {
         }
     });
     console.log(signalStrenght);
+
+    let CRT = [];
+    for (let y = 0; y < 6; y++) {
+        let temp: string[] = [];
+        for (let x = 0; x < 40; x++) {
+            let i = x + 40 * y;
+            if (
+                X[i] - 1 === cycle[i] % 40 ||
+                X[i] === cycle[i] % 40 ||
+                X[i] + 1 === cycle[i] % 40
+            ) {
+                temp.push("#");
+            } else {
+                temp.push(".");
+            }
+        }
+        CRT.push(temp.join(""));
+    }
+    console.log(CRT);
 };
 
 partOne("puzzle");
