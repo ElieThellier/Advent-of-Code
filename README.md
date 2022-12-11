@@ -1,15 +1,13 @@
 # [Advent of code](https://adventofcode.com)
 
-<br>
-
-# &nbsp;[2020](https://github.com/ElieThellier/advent-of-code/tree/main/2020) - [AoC 2020](https://adventofcode.com/2020)
+# &nbsp;[2020](./2020) - [AoC 2020](https://adventofcode.com/2020)
 
 Languages choisis :
 
 -   js/ts
 -   Go
 
-Pour afficher une solution : aller sous 2020/js ou 2020/ts et lancer `npm run dayXX`
+Pour afficher une solution : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.
 
 ---
 
@@ -17,15 +15,15 @@ Pour afficher une solution : aller sous 2020/js ou 2020/ts et lancer `npm run da
 
 ---
 
-<br>
+# &nbsp;[2022](./2022) - [AoC 2022](https://adventofcode.com/2022)
 
-# &nbsp;[2022](https://adventofcode.com/2022) - [AoC 2022](https://adventofcode.com/2022)
+Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.
 
 Languages choisis :
 
 -   TypeScript
 
-Pour afficher une solution : aller sous 2022/ts et lancer `npm install` puis `npm run dayXX`
+Pour afficher une solution : aller sous 2022/ts et lancer `npm install` puis `npm run dayXX`.
 
 ---
 
@@ -52,8 +50,8 @@ Pour afficher une solution : aller sous 2022/ts et lancer `npm install` puis `np
 10000
 ```
 
--   Remarques :
-    -   .
+-   Remarque :
+    -   Utilisation des fonctions sur les tableaux (split, map, reduce, splice, ...) pour obtenir le résultat en une ligne.
 
 ---
 
@@ -69,8 +67,8 @@ B X
 C Z
 ```
 
--   Remarques :
-    -   .
+-   Remarque :
+    -   Une meilleure implémentation serait d'utiliser des dictionnaires avec key = "A X" ... et value = le résultat en point au lieu d'un switch pas beau.
 
 ---
 
@@ -90,7 +88,9 @@ CrZsJsPPZsGzwwsLwLmpwMDw
 ```
 
 -   Remarques :
-    -   .
+    -   Les majuscules sont placées avant les minuscules en ASCII :) ;
+    -   Utilisation de filter pour trouver les éléments en commun dans plusieurs tableaux ;
+    -   Une meilleur implémentation serait d'utiliser des ensembles (Set) et de regarder leur intersection.
 
 ---
 
@@ -109,8 +109,8 @@ CrZsJsPPZsGzwwsLwLmpwMDw
 2-6,4-8
 ```
 
--   Remarques :
-    -   .
+-   Remarque :
+    -   R.A.S.
 
 ---
 
@@ -132,8 +132,8 @@ move 2 from 2 to 1
 move 1 from 1 to 2
 ```
 
--   Remarques :
-    -   .
+-   Remarque :
+    -   Ce problème est un bon entrainement au parsing, l'astuce est de créer les stacks en prenant les caractères tous les 1 + 4 \* j. Mais ça aurait plus rapide de créer ces listes manuellement.
 
 ---
 
@@ -148,7 +148,8 @@ bvwbjplbgvbhsrlpgdmjqwftvncz
 ```
 
 -   Remarques :
-    -   .
+    -   Attention slice != splice ^^ ;
+    -   L'utilisation d'ensemble (Set) pour trouver le mot sans répétition trivialise le problème.
 
 ---
 
@@ -185,7 +186,8 @@ $ ls
 ```
 
 -   Remarques :
-    -   .
+    -   Attention au fait que les clés d'un dictionnaire doivent être uniques ;
+    -   Merci à la FAT32 pour les chemins de fichier <3.
 
 ---
 
@@ -204,7 +206,8 @@ $ ls
 ```
 
 -   Remarques :
-    -   .
+    -   Première réelle utilisation des types ;
+    -   On peut travailler uniquement sur des lignes si on sait transposer une matrice et retourner des listes (reverse).
 
 ---
 
@@ -225,8 +228,9 @@ L 5
 R 2
 ```
 
--   Remarques :
-    -   .
+-   ## Remarques :
+    -   L'égalité de tableau nécessite de vérifier l'égalité de chaque valeur ;
+    -   Lire l'énoncé c'est fort : la queue ne prend pas forcément la position précédente de la tête, dommage de l'avoir découvert uniquement à la partie 2.
 
 ---
 
@@ -242,8 +246,8 @@ addx 3
 addx -5
 ```
 
--   Remarques :
-    -   .
+-   Remarque :
+    -   Passage d'indice d'un tableau 2D à 1D : index = x + width \* y.
 
 ---
 
@@ -270,7 +274,9 @@ Monkey 1:
 ```
 
 -   Remarques :
-    -   .
+    -   PART 1 : R.A.S ;
+    -   PART 2 : Obtention de valeurs infinies. J'ai essayé d'utiliser des BigInt mais même problème. La solution est de prendre le reste de la division euclidienne par le produit des tests de divisibilité de chaque singe. Ce reste possède les mêmes propriétés de multiplicité que le nombre initial ;
+    -   Le parsing manuel aurait été plus rapide.
 
 ---
 
