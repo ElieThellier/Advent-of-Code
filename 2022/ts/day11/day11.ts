@@ -1,8 +1,12 @@
 import * as fs from "fs";
 
-const timer = (script: (i: string) => any, input: string) => {
+const timer = (
+    script: (i: string, p1: boolean) => number,
+    input: string,
+    part1: boolean
+) => {
     const start = performance.now();
-    script(input);
+    script(input, part1);
     const end = performance.now();
     return `${(end - start).toFixed(2)} ms`;
 };
@@ -39,13 +43,16 @@ const parseToMonkey = (monkey: string) => {
     return result;
 };
 
-const partOne = (input: string) => {
+const partsOneAndTwo = (input: string, part1: boolean) => {
     let toParseMonkeys = fs
         .readFileSync(`./day11/inputs/${input}.in`, "utf-8")
         .split("\n\n");
     const monkeys = toParseMonkeys.map((monkey) => parseToMonkey(monkey)); // Monkey #i is in monkeys[i]
     let worryLevel: number = 0;
+    let moduling: number = 1; // the product of every value of the tests of divisibility
+    monkeys.forEach((monkey) => (moduling *= monkey.test));
     let nRounds = 20;
+    part1 ? (nRounds = 20) : (nRounds = 10000);
     for (let round = 1; round <= nRounds; round++) {
         monkeys.forEach((monkey, id) => {
             let nItems = monkey.items.length;
@@ -58,20 +65,44 @@ const partOne = (input: string) => {
                     : monkey.operation[1] !== "old"
                     ? (worryLevel *= parseInt(monkey.operation[1]))
                     : (worryLevel *= worryLevel);
-                worryLevel = Math.floor(worryLevel / 3);
+                if (part1) {
+                    // part1
+                    worryLevel = Math.floor(Number(worryLevel) / 3);
+                } else if (worryLevel > moduling) {
+                    // avoid infinity
+                    worryLevel %= moduling;
+                }
+                monkey.inspected++;
                 worryLevel % monkey.test === 0
                     ? monkeys[monkey.true].items.push(worryLevel)
                     : monkeys[monkey.false].items.push(worryLevel);
-                monkey.inspected++;
                 monkey.items = monkey.items.slice(1, nItems);
             }
         });
     }
     let inspected: number[] = [];
     monkeys.forEach((monkey) => inspected.push(monkey.inspected));
-    console.log(
+    return (
         inspected.sort((a, b) => b - a)[0] * inspected.sort((a, b) => b - a)[1]
     );
 };
 
-partOne("puzzle");
+["exemple", "puzzle"].forEach((input) => {
+    console.log(
+        `PART 1 "${input}" : The level of monkey business after "20" rounds is _${partsOneAndTwo(
+            input,
+            true
+        )}_ (executed in ${timer(partsOneAndTwo, input, true)})`
+    );
+});
+console.log("");
+
+["exemple", "puzzle"].forEach((input) => {
+    console.log(
+        `PART 2 "${input}" : The level of monkey business after "10000" rounds is _${partsOneAndTwo(
+            input,
+            false
+        )}_ (executed in ${timer(partsOneAndTwo, input, false)})`
+    );
+});
+console.log("");
