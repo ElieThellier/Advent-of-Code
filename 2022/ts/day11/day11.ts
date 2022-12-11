@@ -21,25 +21,19 @@ type Monkey = {
 };
 
 const parseToMonkey = (monkey: string) => {
+    const lines = monkey.split("\n");
+    let op = lines[2].trim().split(":")[1].trim();
     let result: Monkey = {
-        items: [],
-        operation: ["", "0"],
-        test: 1,
-        true: -1,
-        false: -1,
+        items: lines[1]
+            .split(":")[1]
+            .split(",")
+            .map((x) => parseInt(x)),
+        operation: [op.split(" ")[3], op.split(" ")[4]],
+        test: parseInt(lines[3].trim().split(" ")[3]),
+        true: parseInt(lines[4].trim().split(" ")[5]),
+        false: parseInt(lines[5].trim().split(" ")[5]),
         inspected: 0,
     };
-    const lines = monkey.split("\n");
-    result.items = lines[1]
-        .split(":")[1]
-        .split(",")
-        .map((x) => parseInt(x));
-    let op = lines[2].trim().split(":")[1].trim();
-    result.operation = [op.split(" ")[3], op.split(" ")[4]];
-    result.test = parseInt(lines[3].trim().split(" ")[3]);
-    result.true = parseInt(lines[4].trim().split(" ")[5]);
-    result.false = parseInt(lines[5].trim().split(" ")[5]);
-    result.inspected = 0;
     return result;
 };
 
