@@ -65,10 +65,13 @@ const partOne = (input: string) => {
                 if (currentCell.posY == 0) break;
                 else if (
                     grid[currentCell.posX][currentCell.posY - 1].height ===
-                    currentCell.height + 1
+                        currentCell.height + 1 ||
+                    grid[currentCell.posX][currentCell.posY - 1].height ===
+                        currentCell.height
                 ) {
                     currentCell = grid[currentCell.posX][currentCell.posY - 1];
                     currentCell.visited = true;
+                    console.log(currentCell.posX, currentCell.posY);
                 } else break;
 
             case 1:
@@ -78,10 +81,13 @@ const partOne = (input: string) => {
                 if (currentCell.posX == width - 1) break;
                 else if (
                     grid[currentCell.posX + 1][currentCell.posY].height ===
-                    currentCell.height + 1
+                        currentCell.height + 1 ||
+                    grid[currentCell.posX + 1][currentCell.posY].height ===
+                        currentCell.height
                 ) {
                     currentCell = grid[currentCell.posX + 1][currentCell.posY];
                     currentCell.visited = true;
+                    console.log(currentCell.posX, currentCell.posY);
                 } else break;
             case 2:
                 if (currentCell.isBestSignal) {
@@ -90,10 +96,13 @@ const partOne = (input: string) => {
                 if (currentCell.posY == height - 1) break;
                 else if (
                     grid[currentCell.posX][currentCell.posY + 1].height ===
-                    currentCell.height + 1
+                        currentCell.height + 1 ||
+                    grid[currentCell.posX][currentCell.posY + 1].height ===
+                        currentCell.height
                 ) {
                     currentCell = grid[currentCell.posX][currentCell.posY + 1];
                     currentCell.visited = true;
+                    console.log(currentCell.posX, currentCell.posY);
                 } else break;
             case 3:
                 if (currentCell.isBestSignal) {
@@ -102,10 +111,13 @@ const partOne = (input: string) => {
                 if (currentCell.posX == 0) break;
                 else if (
                     grid[currentCell.posX - 1][currentCell.posY].height ===
-                    currentCell.height + 1
+                        currentCell.height + 1 ||
+                    grid[currentCell.posX - 1][currentCell.posY].height ===
+                        currentCell.height
                 ) {
                     currentCell = grid[currentCell.posX - 1][currentCell.posY];
                     currentCell.visited = true;
+                    console.log(currentCell.posX, currentCell.posY);
                 } else break;
             default:
                 break;
