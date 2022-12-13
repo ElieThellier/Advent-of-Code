@@ -228,7 +228,7 @@ L 5
 R 2
 ```
 
--   ## Remarques :
+-   Remarques :
     -   L'égalité de tableau nécessite de vérifier l'égalité de chaque valeur ;
     -   Lire l'énoncé c'est fort : la queue ne prend pas forcément la position précédente de la tête, dommage de l'avoir découvert uniquement à la partie 2.
 
