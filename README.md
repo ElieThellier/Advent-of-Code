@@ -302,18 +302,41 @@ abdefghi
 
 ---
 
-## --- [Day 13: coming soon...](https://adventofcode.com/2022/day/13) ---
+## --- [Day 13: "Distress Signal"](https://adventofcode.com/2022/day/13) ---
 
 -   [Ma solution](./2022/ts/day13/day13.ts)
 
 -   Exemple d'entrée :
 
 ```
+[1,1,3,1,1]
+[1,1,5,1,1]
 
+[[1],[2,3,4]]
+[[1],4]
+
+[9]
+[[8,7,6]]
+
+[[4,4],4,4]
+[[4,4],4,4,4]
+
+[7,7,7,7]
+[7,7,7]
+
+[]
+[3]
+
+[[[]]]
+[[]]
+
+[1,[2,[3,[4,[5,6,7]]]],8,9]
+[1,[2,[3,[4,[5,6,0]]]],8,9]
 ```
 
 -   Remarques :
-    -   .
+    -   J'ai perdu pas mal de temps à essayer de parser l'input avant de découvrir la sainte fonction JSON.parse() mais je connaissais déjà Array.sort() pour la partie 2;
+    -   J'ai aussi perdu du temps dans ma fonction de comparaison car j'avais un cas où je renvoyais des undefined parce que JS ne lance pas d'erreur quand on fait des OutOfBound.
 
 ---
 
