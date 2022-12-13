@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import { terminal } from "terminal-kit";
 
 const timer = (script: (i: string) => number, input: string) => {
     const start = performance.now();
@@ -7,19 +8,35 @@ const timer = (script: (i: string) => number, input: string) => {
     return `${(end - start).toFixed(2)} ms`;
 };
 
-const checkOrder = (left: any[], right: any[], index: number) => {
-    for (let i = 0; i < Math.min(left.length, right.length); i++) {
-        if (Number(left[i]) === left[i] && Number(right[i]) === right[i]) {
+const checkOrder: any = (left: any[], right: any[]) => {
+    let min = Math.min(left.length, right.length);
+    for (let i = 0; i < min; i++) {
+        if (typeof left[i] === "number" && typeof right[i] === "number") {
             if (left[i] < right[i]) {
-                return `${index + 1}->GOOD`;
+                return true;
             } else if (left[i] > right[i]) {
-                return `${index + 1}->BAD`;
+                return false;
             }
-        } else if (Array.isArray(left[i]) && Array.isArray(right[i])) {
-            return `${index + 1}->${[left[i], " ", right[i]]}`;
+        } else if (typeof left[i] === "number") {
+            return checkOrder([left[i]], right[i]);
+        } else if (typeof right[i] === "number") {
+            return checkOrder(left[i], [right[i]]);
         } else {
-            return `${index + 1}->// TO DO`;
+            if (checkOrder(left[i], right[i]) !== "pb") {
+                return checkOrder(left[i], right[i]);
+            } else {
+                if (i < min - 1) {
+                    return checkOrder(left[i + 1], right[i + 1]);
+                }
+            }
         }
+    }
+    if (left.length < right.length) {
+        return true;
+    } else if (left.length > right.length) {
+        return false;
+    } else {
+        return "pb";
     }
 };
 
@@ -27,11 +44,17 @@ const partOne = (input: string) => {
     const pairs: string[] = fs
         .readFileSync(`./day13/inputs/${input}.in`, "utf-8")
         .split("\n\n");
+    let result = 0;
     pairs.forEach((pair, index) => {
         let left = JSON.parse(pair.split("\n")[0]);
         let right = JSON.parse(pair.split("\n")[1]);
-        console.log(checkOrder(left, right, index));
+        let goodOrder: boolean = checkOrder(left, right);
+        goodOrder && (result += index + 1);
     });
+    console.log(result);
 };
 
-partOne("exemple");
+// 5778 : too high
+// 5536 : too low
+
+partOne("puzzle");
