@@ -335,7 +335,8 @@ abdefghi
 ```
 
 -   Remarques :
-    -   .
+    -   J'ai perdu pas mal de temps à essayer de parser l'input avant de découvrir la sainte fonction JSON.parse() mais je connaissais déjà Array.sort() pour la partie 2;
+    -   J'ai aussi perdu du temps dans ma fonction de comparaison car j'avais un cas où je renvoyais des undefined parce que JS ne lance pas d'erreur quand on fait des OutOfBound.
 
 ---
 
