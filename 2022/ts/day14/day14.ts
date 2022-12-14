@@ -7,53 +7,50 @@ const timer = (script: (i: string) => number, input: string) => {
     return `${(end - start).toFixed(2)} ms`;
 };
 
+const parseAndGetExtremums = (input: string) => {
+    // input line by line
+    const lines = fs
+        .readFileSync(`./day14/inputs/${input}.in`, "utf-8")
+        .split("\n");
+    // rocks without line between rocks
+    let points = lines
+        .join(" -> ")
+        .split(" -> ")
+        .map((point) => point.split(",").map((x) => parseInt(x)));
+    // extremum pos for each coordonate
+    let minX = Math.min(...points.map((point) => point[0]));
+    let maxX = Math.max(...points.map((point) => point[0]));
+    let maxY = Math.max(...points.map((point) => point[1]));
+    return [lines, points, minX, maxX, maxY];
+};
+
 const addSand: any = (grid: string[][], x: number, y: number) => {
-    if ((x === 0 || x === grid[0].length - 1) && grid[y + 1][x] !== ".") {
+    if (x === 0 || x === grid[0].length - 1 || y === grid.length - 1) {
         return "STOP";
     }
-    if (y === grid.length - 1) {
-        return "STOP";
-    }
-    if (grid[y + 1][x] === ".") {
-        return addSand(grid, x, y + 1);
-    } else if (grid[y + 1][x - 1] === ".") {
-        return addSand(grid, x - 1, y + 1);
-    } else if (grid[y + 1][x + 1] === ".") {
-        return addSand(grid, x + 1, y + 1);
-    } else {
+    if (grid[y + 1][x] === ".") return addSand(grid, x, y + 1);
+    else if (grid[y + 1][x - 1] === ".") return addSand(grid, x - 1, y + 1);
+    else if (grid[y + 1][x + 1] === ".") return addSand(grid, x + 1, y + 1);
+    else {
         grid[y][x] = "o";
         return grid;
     }
 };
 
 const partOne = (input: string) => {
-    // input line by line
-    const lines = fs
-        .readFileSync(`./day14/inputs/${input}.in`, "utf-8")
-        .split("\n");
-    // rocks without line between rocks
-    let points = fs
-        .readFileSync(`./day14/inputs/${input}.in`, "utf-8")
-        .split("\n")
-        .join(" -> ")
-        .split(" -> ")
-        .map((point) => point.split(",").map((x) => parseInt(x)));
-    // min pos for each coordonate
-    let minX = Math.min(...points.map((point) => point[0]));
-    let maxX = Math.max(...points.map((point) => point[0]));
-    let maxY = Math.max(...points.map((point) => point[1]));
+    let [lines, points, minX, maxX, maxY]: any[] = parseAndGetExtremums(input);
     let width = maxX - minX + 1;
     let height = maxY - 0 + 1;
 
     // pos of starting sand
     let startingSand = [500 - minX, 0];
     // translate points to fit index of grid and points coordonate
-    points = points.map((point) =>
+    points = points.map((point: number[]) =>
         point.map((coord, i) => (i === 0 ? coord - minX : coord))
     );
     // parse lines to array of rocks
     let rockLines: any[] = [];
-    lines.forEach((line) => {
+    lines.forEach((line: string) => {
         rockLines.push(
             line
                 .split(" -> ")
@@ -66,7 +63,7 @@ const partOne = (input: string) => {
                 )
         );
     });
-    // create rocks between base rocks
+    // create all the rocks (including those between base rocks)
     let rocks: number[][] = [];
     rockLines.forEach((line: number[][]) => {
         for (let j = 0; j < line.length - 1; j++) {
@@ -108,35 +105,23 @@ const partOne = (input: string) => {
         //console.log(grid.map((line) => line.join("")).join("\n"));
     }
 
-    // pretty print the grid
+    // pretty print the grid -> uncomment to see the grid
     //console.log(grid.map((line) => line.join("")).join("\n"));
 
     return result;
 };
 
 const partTwo = (input: string) => {
-    // input line by line
-    const lines = fs
-        .readFileSync(`./day14/inputs/${input}.in`, "utf-8")
-        .split("\n");
-    // rocks without line between rocks
-    let points = fs
-        .readFileSync(`./day14/inputs/${input}.in`, "utf-8")
-        .split("\n")
-        .join(" -> ")
-        .split(" -> ")
-        .map((point) => point.split(",").map((x) => parseInt(x)));
-    // min pos for each coordonate
-    let minX = Math.min(...points.map((point) => point[0]));
-    let maxX = Math.max(...points.map((point) => point[0]));
-    let maxY = Math.max(...points.map((point) => point[1]));
+    let [lines, points, minX, maxX, maxY]: any[] = parseAndGetExtremums(input);
 
     // the ground is 2 space higher
     maxY += 2;
 
     // the ground is infinite (I started with an offset of 10000 to be sure that I have the right result than descrease the value while the value stay the same)
     // 10000 works, 1000, 500, 300, 150, 143 is the minimum offset
-    const offset = 143;
+    let offset = 143;
+    // same for exemple input
+    if (input === "exemple") offset = 8;
 
     minX -= offset;
     maxX += offset;
@@ -144,22 +129,21 @@ const partTwo = (input: string) => {
     let width = maxX - minX + 1;
     let height = maxY - 0 + 1;
 
-    // pos of starting sand
     let startingSand = [500 - minX, 0];
-    // translate points to fit index of grid and points coordonate
-    points = points.map((point) =>
-        point.map((coord, i) => (i === 0 ? coord - minX : coord))
+    points = points.map((point: number[]) =>
+        point.map((coord: number, i: number) =>
+            i === 0 ? coord - minX : coord
+        )
     );
-    // parse lines to array of rocks
     let rockLines: any[] = [];
-    lines.forEach((line) => {
+    lines.forEach((line: string) => {
         rockLines.push(
             line
                 .split(" -> ")
-                .map((point) =>
+                .map((point: string) =>
                     point
                         .split(",")
-                        .map((x, i) =>
+                        .map((x: string, i: number) =>
                             i === 0 ? parseInt(x) - minX : parseInt(x)
                         )
                 )
@@ -170,7 +154,6 @@ const partTwo = (input: string) => {
         [0, maxY],
         [maxX - minX, maxY],
     ]);
-    // create rocks between base rocks
     let rocks: number[][] = [];
     rockLines.forEach((line: number[][]) => {
         for (let j = 0; j < line.length - 1; j++) {
@@ -189,7 +172,6 @@ const partTwo = (input: string) => {
             }
         }
     });
-    // create grid with good dimensions and "." for air and "+" for startingSand
     let grid = new Array();
     for (let y = 0; y < height; y++) {
         grid.push([]);
@@ -201,8 +183,6 @@ const partTwo = (input: string) => {
             }
         }
     }
-    // add all rocks to the grid
-    // ATTENTION grid[Y][X]
     for (let rock of rocks) {
         grid[rock[1]][rock[0]] = "#";
     }

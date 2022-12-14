@@ -340,18 +340,20 @@ abdefghi
 
 ---
 
-## --- [Day 14: coming soon...](https://adventofcode.com/2022/day/14) ---
+## --- [Day 14: "Regolith Reservoir"](https://adventofcode.com/2022/day/14) ---
 
 -   [Ma solution](./2022/ts/day14/day14.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+498,4 -> 498,6 -> 496,6
+503,4 -> 502,4 -> 502,9 -> 494,9
 ```
 
 -   Remarques :
-    -   .
+    -   J'ai représenté la grille avec des tableaux de tableau, on pouvait aussi utiliser un ensemble contenant chaque point (son tableau de coordonnées transformait en String) et un string représentant sa valeur. L'avantage des tableaux de tableau est de pouvoir "print" la grille facilement et ainsi voir ce qu'il se passe. Par contre, pour la partie 2, j'agrandis le tableau artificielement avec un offset pour simuler le sol infini : c'est pas très élégant et ce n'est pas adapté à tous les inputs (sauf si je mets un offset très très très grand) ;
+    -   Mon script peut être grandement factoriser.
 
 ---
 
