@@ -23,6 +23,7 @@ const getNCharsBeforeMarker = (nDistinctChars: number, word: string[]) => {
     return -1;
 };
 
+console.log('\n--- Day 06: "Tuning Trouble" ---\n');
 ["exemple1", "exemple2", "exemple3", "exemple4", "exemple5", "puzzle"].forEach(
     (input) => {
         let word = fs

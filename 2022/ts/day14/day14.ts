@@ -160,6 +160,8 @@ const partTwo = (input: string) => {
 
 // PART 1 : 666 too low
 
+console.log('\n--- Day 14: "Regolith Reservoir" ---\n');
+
 ["exemple", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : _${partOne(

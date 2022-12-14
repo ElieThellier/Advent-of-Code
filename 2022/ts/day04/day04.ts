@@ -54,7 +54,7 @@ const logResults = (inputs: string[]) => {
         )
     );
 };
-
+console.log('\n--- Day 04: "Camp Cleanup" ---\n');
 logResults(["exemple", "puzzle"]);
 
 console.timeEnd("\nExecution Time");

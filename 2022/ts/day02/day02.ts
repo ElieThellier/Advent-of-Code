@@ -106,7 +106,7 @@ const logResults1 = (inputs: string[]) =>
             )}_`
         );
     });
-
+console.log('\n--- Day 02: "Rock Paper Scissors" ---\n');
 logResults1(inputs);
 
 // PART 2 :

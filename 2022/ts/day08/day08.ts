@@ -128,6 +128,7 @@ const partsOneAndTwo = (input: string) => {
     );
 };
 
+console.log('\n--- Day 08: "Treetop Tree House" ---\n');
 ["exemple", "puzzle"].forEach((input) => {
     console.log(
         `\nAlgorithm for both parts was executed in ${timer(
