@@ -7,8 +7,8 @@ Languages choisis :
 -   js/ts (uniquement pour les premiers jours)
 -   Go
 
-Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.
-Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run dayXX.go`.
+Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.  
+Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
 
 ---
 
@@ -18,7 +18,8 @@ Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run da
 
 # &nbsp;[2022](./2022) - [AoC 2022](https://adventofcode.com/2022)
 
-Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie. Si j'ai le temps, j'avancerai sur les problèmes de l'AoC 2020 en Go.
+Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.
+Si j'ai le temps, j'avancerai aussi sur les problèmes de l'AoC 2020 en Go.
 
 Languages choisis :
 
