@@ -60,7 +60,7 @@ const partsOneAndTwo = (input: string) => {
         )}_`
     );
 };
-
+console.log('\n--- Day 07: "No Space Left On Device" ---\n');
 ["exemple", "puzzle"].forEach((input) => {
     console.log(
         `\nAlgorithm for both parts was executed in ${timer(

@@ -59,6 +59,6 @@ const partsOneAndTwo = (input: string) => {
     );
     console.log(CRT);
 };
-
+console.log('\n--- Day 10: "Cathode-Ray Tube" ---\n');
 console.log(`\nBoth parts executed in ${timer(partsOneAndTwo, "exemple2")}\n`);
 console.log(`\nBoth parts executed in ${timer(partsOneAndTwo, "puzzle")}\n`);

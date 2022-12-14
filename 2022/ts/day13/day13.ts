@@ -74,6 +74,7 @@ const partTwo = (input: string) => {
 
 // PART 2: 25956 : too high
 
+console.log('\n--- Day 13: "Distress Signal" ---\n');
 ["exemple", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : The sum of the indices of the pairs that are in the right order is _${partOne(

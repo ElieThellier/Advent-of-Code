@@ -76,6 +76,8 @@ const logResults = (inputs: string[]) => {
     );
 };
 
+console.log('\n--- Day 03: "Rucksack Reorganization" ---\n');
+
 logResults(["exemple", "puzzle"]);
 
 console.timeEnd("\nExecution Time");

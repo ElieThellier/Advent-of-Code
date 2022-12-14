@@ -68,7 +68,7 @@ const partsOneTwo = (input: string, part: number) => {
         ? stacks1.map((stack) => stack[stack.length - 1]).join("")
         : stacks2.map((stack) => stack[stack.length - 1]).join("");
 };
-
+console.log('\n--- Day 05: "Supply Stacks" ---\n');
 ["exemple", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 (crateMover9000) : The crates ends up on top of each stacks for the input "${input}" are _${partsOneTwo(

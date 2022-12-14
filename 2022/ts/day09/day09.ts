@@ -123,6 +123,7 @@ const partsOneAndTwo = (input: string, ropeLenght: number) => {
     return countTailVisitedPos[ropeLenght - 1];
 };
 
+console.log('\n--- Day 09: "Rope Bridge" ---\n');
 ["exemple1", "exemple2", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 : The number of positions visited by the tail of the rope is _${partsOneAndTwo(

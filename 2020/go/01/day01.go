@@ -48,12 +48,12 @@ func main (){
 	fmt.Println("\n--- Day 01: Report Repair ---")
 
 	start:=time.Now()
-	fmt.Printf("Part 1 'exemple' : %d (executed in %s)\n", Part1(exemple), time.Since(start))
+	fmt.Printf("PART 1 'exemple' : %d (executed in %s)\n", Part1(exemple), time.Since(start))
 	start=time.Now()
-	fmt.Printf("Part 1 'puzzle' : %d (executed in %s)\n", Part1(puzzle), time.Since(start))
+	fmt.Printf("PART 1 'puzzle' : %d (executed in %s)\n", Part1(puzzle), time.Since(start))
 
 	start=time.Now()
-	fmt.Printf("Part 2 'exemple' : %d (executed in %s)\n", Part2(exemple), time.Since(start))
+	fmt.Printf("PART 2 'exemple' : %d (executed in %s)\n", Part2(exemple), time.Since(start))
 	start=time.Now()
-	fmt.Printf("Part 2 'puzzle' : %d (executed in %s)\n\n", Part2(puzzle), time.Since(start))
+	fmt.Printf("PART 2 'puzzle' : %d (executed in %s)\n\n", Part2(puzzle), time.Since(start))
 }

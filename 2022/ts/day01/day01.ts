@@ -28,6 +28,7 @@ const topKmaxCalories = (numberKofElves: number) => (inputs: string[]) =>
         )
     );
 
+console.log('\n--- Day 01: "Calorie Counting" ---\n');
 topKmaxCalories(1)(inputs);
 
 const numberKofElves = 3;
