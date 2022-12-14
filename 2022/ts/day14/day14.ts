@@ -24,46 +24,45 @@ const parseAndGetExtremums = (input: string) => {
     return [lines, points, minX, maxX, maxY];
 };
 
-const addSand: any = (grid: string[][], x: number, y: number) => {
-    if (x === 0 || x === grid[0].length - 1 || y === grid.length - 1) {
-        return "STOP";
-    }
-    if (grid[y + 1][x] === ".") return addSand(grid, x, y + 1);
-    else if (grid[y + 1][x - 1] === ".") return addSand(grid, x - 1, y + 1);
-    else if (grid[y + 1][x + 1] === ".") return addSand(grid, x + 1, y + 1);
-    else {
-        grid[y][x] = "o";
-        return grid;
-    }
-};
-
-const partOne = (input: string) => {
-    let [lines, points, minX, maxX, maxY]: any[] = parseAndGetExtremums(input);
+const createGrid = (
+    lines: string[],
+    points: number[][],
+    minX: number,
+    maxX: number,
+    maxY: number,
+    part: number
+) => {
     let width = maxX - minX + 1;
     let height = maxY - 0 + 1;
-
-    // pos of starting sand
     let startingSand = [500 - minX, 0];
-    // translate points to fit index of grid and points coordonate
+    // translate points to have the starting point at 0,0
     points = points.map((point: number[]) =>
-        point.map((coord, i) => (i === 0 ? coord - minX : coord))
+        point.map((coord: number, i: number) =>
+            i === 0 ? coord - minX : coord
+        )
     );
-    // parse lines to array of rocks
     let rockLines: any[] = [];
     lines.forEach((line: string) => {
         rockLines.push(
             line
                 .split(" -> ")
-                .map((point) =>
+                .map((point: string) =>
                     point
                         .split(",")
-                        .map((x, i) =>
+                        .map((x: string, i: number) =>
                             i === 0 ? parseInt(x) - minX : parseInt(x)
                         )
                 )
         );
     });
-    // create all the rocks (including those between base rocks)
+    // add points for ground
+    if (part === 2) {
+        rockLines.push([
+            [0, maxY],
+            [maxX - minX, maxY],
+        ]);
+    }
+    // create rocks between base rocks
     let rocks: number[][] = [];
     rockLines.forEach((line: number[][]) => {
         for (let j = 0; j < line.length - 1; j++) {
@@ -82,7 +81,7 @@ const partOne = (input: string) => {
             }
         }
     });
-    // create grid with good dimensions and "." for air and "+" for startingSand
+    // init grid with rocks and sand
     let grid = new Array();
     for (let y = 0; y < height; y++) {
         grid.push([]);
@@ -94,11 +93,31 @@ const partOne = (input: string) => {
             }
         }
     }
-    // add all rocks to the grid
-    // ATTENTION grid[Y][X]
+    // add rocks
     for (let rock of rocks) {
         grid[rock[1]][rock[0]] = "#";
     }
+    return [grid, startingSand];
+};
+
+const addSand: any = (grid: string[][], x: number, y: number) => {
+    if (x === 0 || x === grid[0].length - 1 || y === grid.length - 1) {
+        return "STOP";
+    }
+    if (grid[y + 1][x] === ".") return addSand(grid, x, y + 1);
+    else if (grid[y + 1][x - 1] === ".") return addSand(grid, x - 1, y + 1);
+    else if (grid[y + 1][x + 1] === ".") return addSand(grid, x + 1, y + 1);
+    else {
+        grid[y][x] = "o";
+        return grid;
+    }
+};
+
+const partOne = (input: string) => {
+    let [lines, points, minX, maxX, maxY]: any[] = parseAndGetExtremums(input);
+
+    let [grid, startingSand] = createGrid(lines, points, minX, maxX, maxY, 1);
+
     let result = 0;
     while (addSand(grid, startingSand[0], startingSand[1]) !== "STOP") {
         result++;
@@ -122,70 +141,10 @@ const partTwo = (input: string) => {
     let offset = 143;
     // same for exemple input
     if (input === "exemple") offset = 8;
-
     minX -= offset;
     maxX += offset;
 
-    let width = maxX - minX + 1;
-    let height = maxY - 0 + 1;
-
-    let startingSand = [500 - minX, 0];
-    points = points.map((point: number[]) =>
-        point.map((coord: number, i: number) =>
-            i === 0 ? coord - minX : coord
-        )
-    );
-    let rockLines: any[] = [];
-    lines.forEach((line: string) => {
-        rockLines.push(
-            line
-                .split(" -> ")
-                .map((point: string) =>
-                    point
-                        .split(",")
-                        .map((x: string, i: number) =>
-                            i === 0 ? parseInt(x) - minX : parseInt(x)
-                        )
-                )
-        );
-    });
-    // add points for ground
-    rockLines.push([
-        [0, maxY],
-        [maxX - minX, maxY],
-    ]);
-    let rocks: number[][] = [];
-    rockLines.forEach((line: number[][]) => {
-        for (let j = 0; j < line.length - 1; j++) {
-            if (line[j][0] === line[j + 1][0]) {
-                let min = Math.min(line[j][1], line[j + 1][1]);
-                let max = Math.max(line[j][1], line[j + 1][1]);
-                for (let k = min; k <= max; k++) {
-                    rocks.push([line[j][0], k]);
-                }
-            } else {
-                let min = Math.min(line[j][0], line[j + 1][0]);
-                let max = Math.max(line[j][0], line[j + 1][0]);
-                for (let k = min; k <= max; k++) {
-                    rocks.push([k, line[j][1]]);
-                }
-            }
-        }
-    });
-    let grid = new Array();
-    for (let y = 0; y < height; y++) {
-        grid.push([]);
-        for (let x = 0; x < width; x++) {
-            if (x === startingSand[0] && y === startingSand[1]) {
-                grid[y].push("+");
-            } else {
-                grid[y].push(".");
-            }
-        }
-    }
-    for (let rock of rocks) {
-        grid[rock[1]][rock[0]] = "#";
-    }
+    let [grid, startingSand] = createGrid(lines, points, minX, maxX, maxY, 2);
 
     let result = 0;
     while (grid[startingSand[1]][startingSand[0]] !== "o") {
@@ -193,7 +152,7 @@ const partTwo = (input: string) => {
         result++;
     }
 
-    // pretty print the grid (not really usefull with the offset : the grid became very large)
+    // pretty print the grid (not really usefull with the offset : the grid become very large)
     //console.log(grid.map((line) => line.join("")).join("\n"));
 
     return result;
