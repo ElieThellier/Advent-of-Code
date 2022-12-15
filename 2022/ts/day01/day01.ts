@@ -2,7 +2,7 @@ import * as fs from "fs";
 
 console.time("\nExecution Time");
 
-const inputs: string[] = ["exemple", "puzzle"];
+const inputs: string[] = ["example", "puzzle"];
 
 // one line function :)
 /** print the sum of the calories carried by the k = 3 best elves for the inputs in inputs table

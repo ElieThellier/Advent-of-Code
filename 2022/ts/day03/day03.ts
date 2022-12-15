@@ -78,6 +78,6 @@ const logResults = (inputs: string[]) => {
 
 console.log('\n--- Day 03: "Rucksack Reorganization" ---\n');
 
-logResults(["exemple", "puzzle"]);
+logResults(["example", "puzzle"]);
 
 console.timeEnd("\nExecution Time");

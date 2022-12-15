@@ -124,7 +124,7 @@ const partsOneAndTwo = (input: string, ropeLenght: number) => {
 };
 
 console.log('\n--- Day 09: "Rope Bridge" ---\n');
-["exemple1", "exemple2", "puzzle"].forEach((input) => {
+["example1", "example2", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 : The number of positions visited by the tail of the rope is _${partsOneAndTwo(
             input,
@@ -139,7 +139,7 @@ console.log('\n--- Day 09: "Rope Bridge" ---\n');
 
 console.log("\n");
 
-["exemple1", "exemple2", "puzzle"].forEach((input) => {
+["example1", "example2", "puzzle"].forEach((input) => {
     console.log(
         `PART 2 : The number of positions visited by the tail of the rope is _${partsOneAndTwo(
             input,

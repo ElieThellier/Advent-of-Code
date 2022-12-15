@@ -82,7 +82,7 @@ const partsOneAndTwo = (input: string, part1: boolean) => {
 };
 
 console.log('\n--- Day 11: "Monkey in the Middle" ---\n');
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : The level of monkey business after "20" rounds is _${partsOneAndTwo(
             input,
@@ -92,7 +92,7 @@ console.log('\n--- Day 11: "Monkey in the Middle" ---\n');
 });
 console.log("");
 
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 2 "${input}" : The level of monkey business after "10000" rounds is _${partsOneAndTwo(
             input,

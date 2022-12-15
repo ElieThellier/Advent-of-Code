@@ -2,11 +2,11 @@ import * as fs from "fs";
 
 console.time("\nExecution Time");
 
-const inputs: string[] = ["exemple", "puzzle"];
+const inputs: string[] = ["example", "puzzle"];
 
 /** Parse the input as wanted
  *
- * @param input is either exemple or puzzle
+ * @param input is either example or puzzle
  * @returns the input parsed as wanted
  */
 const parser = (input: string) =>

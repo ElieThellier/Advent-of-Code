@@ -235,7 +235,7 @@ const partTwo = (input: string) => {
     return getPathLenght(possibleMove, endingCell, bestStart).length;
 };
 console.log('\n--- Day 12: "Hill Climbing Algorithm" ---\n');
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : The fewest steps required to move from your current position to the location with the best signal is _${partOne(
             input
@@ -244,7 +244,7 @@ console.log('\n--- Day 12: "Hill Climbing Algorithm" ---\n');
 });
 console.log("");
 
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 2 "${input}" : The fewest steps required to move starting from any square with elevation a to the location with the best signal is _${partTwo(
             input

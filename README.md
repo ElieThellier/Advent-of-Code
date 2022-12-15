@@ -44,12 +44,6 @@ Pour afficher une solution : aller sous 2022/ts et lancer `npm install` puis `np
 
 5000
 6000
-
-7000
-8000
-9000
-
-10000
 ```
 
 -   Remarque :
@@ -174,17 +168,6 @@ dir e
 29116 f
 2557 g
 62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k
 ```
 
 -   Remarques :
@@ -322,18 +305,6 @@ abdefghi
 
 [[4,4],4,4]
 [[4,4],4,4,4]
-
-[7,7,7,7]
-[7,7,7]
-
-[]
-[3]
-
-[[[]]]
-[[]]
-
-[1,[2,[3,[4,[5,6,7]]]],8,9]
-[1,[2,[3,[4,[5,6,0]]]],8,9]
 ```
 
 -   Remarques :
@@ -358,14 +329,16 @@ abdefghi
 
 ---
 
-## --- [Day 15: coming soon...](https://adventofcode.com/2022/day/15) ---
+## --- [Day 15: "Beacon Exclusion Zone"](https://adventofcode.com/2022/day/15) ---
 
 -   [Ma solution](./2022/ts/day15/day15.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+Sensor at x=2, y=18: closest beacon is at x=-2, y=15
+Sensor at x=9, y=16: closest beacon is at x=10, y=16
+Sensor at x=13, y=2: closest beacon is at x=15, y=3
 ```
 
 -   Remarques :
