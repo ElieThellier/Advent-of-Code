@@ -7,7 +7,7 @@ const timer = (script: (i: string) => number, input: string) => {
     return `${(end - start).toFixed(2)} ms`;
 };
 
-const parseAndGetExtremums = (input: string) => {
+const parseAndGetExtremums = (input: string, part: number) => {
     // input line by line and split by space
     const lines = fs
         .readFileSync(`./day15/inputs/${input}.in`, "utf-8")
@@ -26,6 +26,8 @@ const parseAndGetExtremums = (input: string) => {
             ],
         ];
     });
+
+    // TODO: on a pas besoin de prendre en compte les coordonates des beacons pour trouver les extremums
     // extremum pos for each coordonate
     let minX = Math.min(
         ...pointsCorrespondance.map((correspondance) =>
@@ -55,8 +57,12 @@ const parseAndGetExtremums = (input: string) => {
     if (input === "example") {
         offset = 1;
     }
-    minX -= offset;
-    maxX += offset;
+
+    // only for part 1
+    if (part === 1) {
+        minX -= offset;
+        maxX += offset;
+    }
 
     // translate all points to positive
     pointsCorrespondance = pointsCorrespondance.map(
@@ -84,8 +90,10 @@ const dist = (p1: number[], p2: number[]) => {
 };
 
 const partOne = (input: string) => {
-    let [pointsCorrespondance, minX, maxX, minY, maxY]: any[] =
-        parseAndGetExtremums(input);
+    let [pointsCorrespondance, minX, maxX, minY]: any[] = parseAndGetExtremums(
+        input,
+        1
+    );
     let [theLine, width]: any[] = createTheLine(minX, maxX);
     let distSB: number[] = [];
     pointsCorrespondance.forEach((correspondance: number[][]) => {
@@ -138,8 +146,65 @@ const partOne = (input: string) => {
     return theLine.filter((c: string) => c === "#").length;
 };
 
-console.log('\n--- Day 15: "Beacon Exclusion Zone" ---\n');
+const getPointsOnCircle = (point: number[], distance: number): number[][] => {
+    let outerCircle: number[][] = [];
+    for (let i = 0; i < distance; i++) {
+        outerCircle.push([point[0] + i, point[1] + distance - i]);
+        outerCircle.push([point[0] + i - distance, point[1] + i]);
+        outerCircle.push([point[0] - i, point[1] - distance + i]);
+        outerCircle.push([point[0] - i + distance, point[1] - i]);
+    }
+    return outerCircle;
+};
 
+const partTwo = (input: string) => {
+    let [pointsCorrespondance, minX, maxX, minY]: any[] = parseAndGetExtremums(
+        input,
+        2
+    );
+
+    let distSB: number[] = [];
+    pointsCorrespondance.forEach((correspondance: number[][]) => {
+        distSB.push(dist(correspondance[0], correspondance[1]));
+    });
+
+    let length = 4_000_000;
+    if (input === "example") {
+        length = 20;
+    }
+
+    // Le point qui n'est vu par aucun sensor est forcément à l'extérieur du cercle de vision de tous les autres sensors
+    // donc, pour tous les sensors, je regarder uniquement sur les points du cercle exterieur à sa vision
+    // et je regarde si le point est à l'extérieur de la vision de tous les autres sensors
+    for (let i = 0; i < pointsCorrespondance.length; i++) {
+        for (let points of getPointsOnCircle(
+            pointsCorrespondance[i][0],
+            distSB[i] + 1
+        )) {
+            let isPoint = 0;
+            for (let j = 0; j < pointsCorrespondance.length; j++) {
+                if (dist(points, pointsCorrespondance[j][0]) > distSB[j]) {
+                    isPoint++;
+                }
+            }
+            if (
+                isPoint === pointsCorrespondance.length &&
+                points[0] - Math.abs(minX) >= 0 &&
+                points[1] - Math.abs(minY) >= 0 &&
+                points[0] - Math.abs(minX) <= length &&
+                points[1] - Math.abs(minY) <= length
+            ) {
+                return (
+                    (points[0] - Math.abs(minX)) * 4_000_000 +
+                    (points[1] - Math.abs(minY))
+                );
+            }
+        }
+    }
+    return 0;
+};
+
+console.log('\n--- Day 15: "Beacon Exclusion Zone" ---\n');
 ["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : _${partOne(
@@ -150,5 +215,13 @@ console.log('\n--- Day 15: "Beacon Exclusion Zone" ---\n');
         )})`
     );
 });
+console.log("");
 
-// TODO: part 2
+["example", "puzzle"].forEach((input) => {
+    console.log(
+        `PART 2 "${input}" : The tuning frequency is equal to _${partTwo(
+            input
+        )}_ (executed in ${timer(partTwo, input)})`
+    );
+});
+console.log("");

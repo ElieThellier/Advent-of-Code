@@ -341,34 +341,39 @@ Sensor at x=9, y=16: closest beacon is at x=10, y=16
 Sensor at x=13, y=2: closest beacon is at x=15, y=3
 ```
 
--   Remarques :
-    -   .
+-   ## Remarques :
+    -   J'ai utilisé un tableau pour représenté la ligne de la partie 1 (avec un offset pour prendre en compte les points vu par le sensor en dehors de la grille (définie par les coordonnées des points extrémaux)), j'ai donc décalé tous les points sur une grille commençant à 0,0, il faut faire attention à redécaler les points pour le résultat de la partie 2 ;
+    -   L'offset définie pour la partie 1 ne rend pas le programme adapté à tous les inputs, il faut donc le modifier pour chaque input ;
+    -   Pour la partie 2, en premier essai, j'étais parti pour regarder tous les points de la grille 4000000x4000000 mais je me suis vite rendu compte que ça ne marcherai pas, ensuite je regardais pour tous les sensors, le carré autour de leur vision mais ça ne marchait pas non plus parce que trop de points. Enfin, j'ai regardé uniquement les points sur le cercle extérieur et ça a marché du premier coup.
 
 ---
 
-## --- [Day 16: coming soon...](https://adventofcode.com/2022/day/16) ---
+## --- [Day 16: "Proboscidea Volcanium"](https://adventofcode.com/2022/day/16) ---
 
 -   [Ma solution](./2022/ts/day16/day16.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+Valve AA has flow rate=0; tunnels lead to valves DD, II, BB
+Valve BB has flow rate=13; tunnels lead to valves CC, AA
+Valve CC has flow rate=2; tunnels lead to valves DD, BB
+Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 ```
 
 -   Remarques :
-    -   .
+    -   Je passe ce problème pour l'instant car je n'ai pas le temps de le faire et il à l'air assez compliqué.
 
 ---
 
-## --- [Day 17: coming soon...](https://adventofcode.com/2022/day/17) ---
+## --- [Day 17: "Pyroclastic Flow"](https://adventofcode.com/2022/day/17) ---
 
 -   [Ma solution](./2022/ts/day17/day17.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+>>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>
 ```
 
 -   Remarques :
