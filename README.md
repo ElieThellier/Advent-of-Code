@@ -1,21 +1,5 @@
 # [Advent of code](https://adventofcode.com)
 
-# &nbsp;[2020](./2020) - [AoC 2020](https://adventofcode.com/2020)
-
-Languages choisis :
-
--   js/ts (uniquement pour les premiers jours)
--   Go
-
-Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.  
-Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
-
----
-
-## &nbsp;&nbsp;&nbsp;// TO DO
-
----
-
 # &nbsp;[2022](./2022) - [AoC 2022](https://adventofcode.com/2022)
 
 Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.
@@ -498,5 +482,23 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 -   Remarques :
     -   .
+
+---
+
+<br>
+
+# &nbsp;[2020](./2020) - [AoC 2020](https://adventofcode.com/2020)
+
+Languages choisis :
+
+-   js/ts (uniquement pour les premiers jours)
+-   Go
+
+Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.  
+Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
+
+---
+
+## &nbsp;&nbsp;&nbsp;// TO DO
 
 ---
