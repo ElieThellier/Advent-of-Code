@@ -1,24 +1,9 @@
 # [Advent of code](https://adventofcode.com)
 
-# &nbsp;[2020](./2020) - [AoC 2020](https://adventofcode.com/2020)
-
-Languages choisis :
-
--   js/ts (uniquement pour les premiers jours)
--   Go
-
-Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.
-Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run dayXX.go`.
-
----
-
-## &nbsp;&nbsp;&nbsp;// TO DO
-
----
-
 # &nbsp;[2022](./2022) - [AoC 2022](https://adventofcode.com/2022)
 
-Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie. Si j'ai le temps, j'avancerai sur les problèmes de l'AoC 2020 en Go.
+Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.
+Si j'ai le temps, j'avancerai aussi sur les problèmes de l'AoC 2020 en Go.
 
 Languages choisis :
 
@@ -43,12 +28,6 @@ Pour afficher une solution : aller sous 2022/ts et lancer `npm install` puis `np
 
 5000
 6000
-
-7000
-8000
-9000
-
-10000
 ```
 
 -   Remarque :
@@ -173,17 +152,6 @@ dir e
 29116 f
 2557 g
 62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k
 ```
 
 -   Remarques :
@@ -321,18 +289,6 @@ abdefghi
 
 [[4,4],4,4]
 [[4,4],4,4,4]
-
-[7,7,7,7]
-[7,7,7]
-
-[]
-[3]
-
-[[[]]]
-[[]]
-
-[1,[2,[3,[4,[5,6,7]]]],8,9]
-[1,[2,[3,[4,[5,6,0]]]],8,9]
 ```
 
 -   Remarques :
@@ -357,44 +313,51 @@ abdefghi
 
 ---
 
-## --- [Day 15: coming soon...](https://adventofcode.com/2022/day/15) ---
+## --- [Day 15: "Beacon Exclusion Zone"](https://adventofcode.com/2022/day/15) ---
 
 -   [Ma solution](./2022/ts/day15/day15.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+Sensor at x=2, y=18: closest beacon is at x=-2, y=15
+Sensor at x=9, y=16: closest beacon is at x=10, y=16
+Sensor at x=13, y=2: closest beacon is at x=15, y=3
 ```
 
--   Remarques :
-    -   .
+-   ## Remarques :
+    -   J'ai utilisé un tableau pour représenté la ligne de la partie 1 (avec un offset pour prendre en compte les points vu par le sensor en dehors de la grille (définie par les coordonnées des points extrémaux)), j'ai donc décalé tous les points sur une grille commençant à 0,0, il faut faire attention à redécaler les points pour le résultat de la partie 2 ;
+    -   L'offset définie pour la partie 1 ne rend pas le programme adapté à tous les inputs, il faut donc le modifier pour chaque input ;
+    -   Pour la partie 2, en premier essai, j'étais parti pour regarder tous les points de la grille 4000000x4000000 mais je me suis vite rendu compte que ça ne marcherai pas, ensuite je regardais pour tous les sensors, le carré autour de leur vision mais ça ne marchait pas non plus parce que trop de points. Enfin, j'ai regardé uniquement les points sur le cercle extérieur et ça a marché du premier coup.
 
 ---
 
-## --- [Day 16: coming soon...](https://adventofcode.com/2022/day/16) ---
+## --- [Day 16: "Proboscidea Volcanium"](https://adventofcode.com/2022/day/16) ---
 
 -   [Ma solution](./2022/ts/day16/day16.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+Valve AA has flow rate=0; tunnels lead to valves DD, II, BB
+Valve BB has flow rate=13; tunnels lead to valves CC, AA
+Valve CC has flow rate=2; tunnels lead to valves DD, BB
+Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 ```
 
 -   Remarques :
-    -   .
+    -   Je passe ce problème pour l'instant car je n'ai pas le temps de le faire et il à l'air assez compliqué.
 
 ---
 
-## --- [Day 17: coming soon...](https://adventofcode.com/2022/day/17) ---
+## --- [Day 17: "Pyroclastic Flow"](https://adventofcode.com/2022/day/17) ---
 
 -   [Ma solution](./2022/ts/day17/day17.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+>>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>
 ```
 
 -   Remarques :
@@ -519,5 +482,23 @@ abdefghi
 
 -   Remarques :
     -   .
+
+---
+
+<br>
+
+# &nbsp;[2020](./2020) - [AoC 2020](https://adventofcode.com/2020)
+
+Languages choisis :
+
+-   js/ts (uniquement pour les premiers jours)
+-   Go
+
+Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.  
+Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
+
+---
+
+## &nbsp;&nbsp;&nbsp;// TO DO
 
 ---

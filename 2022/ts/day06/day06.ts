@@ -24,7 +24,7 @@ const getNCharsBeforeMarker = (nDistinctChars: number, word: string[]) => {
 };
 
 console.log('\n--- Day 06: "Tuning Trouble" ---\n');
-["exemple1", "exemple2", "exemple3", "exemple4", "exemple5", "puzzle"].forEach(
+["example1", "example2", "example3", "example4", "example5", "puzzle"].forEach(
     (input) => {
         let word = fs
             .readFileSync(`./day06/inputs/${input}.in`, "utf-8")
@@ -45,7 +45,7 @@ console.log('\n--- Day 06: "Tuning Trouble" ---\n');
         );
     }
 );
-["exemple1", "exemple2", "exemple3", "exemple4", "exemple5", "puzzle"].forEach(
+["example1", "example2", "example3", "example4", "example5", "puzzle"].forEach(
     (input) => {
         let word = fs
             .readFileSync(`./day06/inputs/${input}.in`, "utf-8")

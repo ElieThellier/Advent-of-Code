@@ -139,8 +139,8 @@ const partTwo = (input: string) => {
     // the ground is infinite (I started with an offset of 10000 to be sure that I have the right result than descrease the value while the value stay the same)
     // 10000 works, 1000, 500, 300, 150, 143 is the minimum offset
     let offset = 143;
-    // same for exemple input
-    if (input === "exemple") offset = 8;
+    // same for example input
+    if (input === "example") offset = 8;
     minX -= offset;
     maxX += offset;
 
@@ -162,7 +162,7 @@ const partTwo = (input: string) => {
 
 console.log('\n--- Day 14: "Regolith Reservoir" ---\n');
 
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : _${partOne(
             input
@@ -174,7 +174,7 @@ console.log('\n--- Day 14: "Regolith Reservoir" ---\n');
 });
 console.log("");
 
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 2 "${input}" : _${partTwo(
             input

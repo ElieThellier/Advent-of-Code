@@ -75,7 +75,7 @@ const partTwo = (input: string) => {
 // PART 2: 25956 : too high
 
 console.log('\n--- Day 13: "Distress Signal" ---\n');
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 1 "${input}" : The sum of the indices of the pairs that are in the right order is _${partOne(
             input
@@ -84,7 +84,7 @@ console.log('\n--- Day 13: "Distress Signal" ---\n');
 });
 console.log("");
 
-["exemple", "puzzle"].forEach((input) => {
+["example", "puzzle"].forEach((input) => {
     console.log(
         `PART 2 "${input}" : The decoder key for the distress signal is _${partTwo(
             input
