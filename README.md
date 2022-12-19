@@ -265,7 +265,7 @@ abdefghi
 
 -   Remarques :
     -   Dans un premier temps, j'ai essayé de créer un algorithme naïf avec une marche aléatoire conditionnée et de le lancer un très grand nombre de fois mais je n'arrivais pas à atteindre la fin ne serait-ce qu'une fois donc j'ai abandonné l'idée et j'ai cherché un algorithme de recherche de plus cours chemin ;
-    -   La base de ma solution est un [algorithme A\*](https://en.wikipedia.org/wiki/A*_search_algorithm) dont j'ai trouvé une bonne explication sur le site [Red Blob Games](https://www.redblobgames.com/pathfinding/a-star/introduction.html). Je n'avais jamais traité de problème de ce type donc la phase d'appréhension de l'algo a été longue ;
+    -   La base de ma solution est un [algorithme de parcours en largeur ou BFS pour Breadth-First Search](https://en.wikipedia.org/wiki/Breadth-first_search) dont j'ai trouvé une bonne explication sur le site [Red Blob Games](https://www.redblobgames.com/pathfinding/a-star/introduction.html). Je n'avais jamais traité de problème de ce type donc la phase d'appréhension de l'algo a été longue ;
     -   J'ai trouvé ce problème beaucoup plus difficile que les précédents. J'ai eu plein de problèmes : je me suis perdu avec les indices de ma grille (j'ai inversé X et Y tout au long de la résolution), les clés d'un dictionnaire doivent toujours être uniques (même PB que day07) et elles ne peuvent pas être des objets (=> penser à passer en string pour vérifier que la clé existe déjà), le 'E' est toujours avant les lettres minuscules en ASCII (même PB que day03 ; je l'ai remplacé par un 'z' ici) et l'utilisation de TypeScript m'a plus handicapé qu'autre chose aujourd'hui ;
     -   Pour la partie 2, j'ai d'abord pensé à calculer tous les plus cours chemin en partant de chaque 'a' mais le temps de calcule était trop long. La solution que j'ai trouvé est de partir de l'arrivée puis de chercher le premier 'a' avec une méthode de recherche différente (si on part d'en haut, il faut descendre pour arriver en bas) et enfin calculer la longueur du chemin entre ce 'a' et l'arrivée.
 
@@ -292,14 +292,14 @@ abdefghi
 ```
 
 -   Remarques :
-    -   J'ai perdu pas mal de temps à essayer de parser l'input avant de découvrir la sainte fonction JSON.parse() mais je connaissais déjà Array.sort() pour la partie 2;
+    -   J'ai perdu pas mal de temps à essayer de parser l'input avant de découvrir la sainte fonction JSON.parse() mais je connaissais déjà Array.sort() pour la partie 2 ;
     -   J'ai aussi perdu du temps dans ma fonction de comparaison car j'avais un cas où je renvoyais des undefined parce que JS ne lance pas d'erreur quand on fait des OutOfBound.
 
 ---
 
 ## --- [Day 14: "Regolith Reservoir"](https://adventofcode.com/2022/day/14) ---
 
--   [Ma solution](./2022/ts/day14/day14.ts)
+-   [Ma solution](./2022/ts/day14/day14.ts) // Peut ne pas fonctionner sur d'autres inputs à cause de l'offset utilisé (voir remarque)
 
 -   Exemple d'entrée :
 
@@ -334,7 +334,7 @@ Sensor at x=13, y=2: closest beacon is at x=15, y=3
 
 ## --- [Day 16: "Proboscidea Volcanium"](https://adventofcode.com/2022/day/16) ---
 
--   [Ma solution](./2022/ts/day16/day16.ts)
+-   [Ma solution](./2022/ts/day16/day16.ts) // Ne résout pas le problème (voir remarques)
 
 -   Exemple d'entrée :
 
@@ -346,13 +346,15 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 ```
 
 -   Remarques :
-    -   Je passe ce problème pour l'instant car je n'ai pas le temps de le faire et il à l'air assez compliqué.
+    -   Je passe ce problème pour l'instant car je n'ai pas le temps de le faire et il à l'air assez compliqué ;
+    -   Update : après avoir essayé plusieurs méthodes (bruteforce, BFS) que je n'ai par réussi à réellement implémenter, j'ai implémenté une méthode "naïve" qui consiste à choisir au hasard si on ouvre la valve ou si on change de tunnel (choisi aussi aléatoirement). J'éxécute cet algorithme un grand nombre de fois (10_000_000) et je calcule à chaque fois la pression libérée. Cette méthode me donne un borne inférieure de la pression libérée maximale par mon input (1605) -> résultat "too low" sur le site adventofcode. J'ai ensuite réduit l'intervalle de recherche en essayant 1650 (en pensant que ma méthode trouverait une valeur de pression libérée maximale assez proche de la réalité (car les pressions libérées par les valves sont assez faibles et car j'éxécute un grand nombre de fois)) -> résultat "too high". Il me restait donc 44 possibilités, j'ai donc essayé bêtement (pas si bêtement que ça car je continuais en même temps à lancer mon algorithme pour trouver une nouvelle borne inférieure donc c'était mieux de diminuer la borne supérieure) 1649 puis 1648 puis 1647 et 1647 était la bonne réponse !!
+    -   (Malheureusement pour ma 2ème étoile, je ne peux pas faire pareil pour la partie 2 car toutes mes valeurs trouvées sont "too low" (mais j'ai quand même trouvé une borne inférieure pour mon input de 1830)).
 
 ---
 
 ## --- [Day 17: "Pyroclastic Flow"](https://adventofcode.com/2022/day/17) ---
 
--   [Ma solution](./2022/ts/day17/day17.ts)
+-   [Ma solution](./2022/ts/day17/day17.ts) // Ne résout pas la partie 2 du problème (voir remarques)
 
 -   Exemple d'entrée :
 
@@ -391,18 +393,29 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 ---
 
-## --- [Day 19: coming soon...](https://adventofcode.com/2022/day/19) ---
+## --- [Day 19: "Not Enough Minerals"](https://adventofcode.com/2022/day/19) ---
 
--   [Ma solution](./2022/ts/day19/day19.ts)
+-   [Ma solution](./2022/ts/day19/day19.ts) // Ne résout pas le problème
 
 -   Exemple d'entrée :
 
 ```
+Blueprint 1:
+  Each ore robot costs 4 ore.
+  Each clay robot costs 2 ore.
+  Each obsidian robot costs 3 ore and 14 clay.
+  Each geode robot costs 2 ore and 7 obsidian.
 
+Blueprint 2:
+  Each ore robot costs 2 ore.
+  Each clay robot costs 3 ore.
+  Each obsidian robot costs 3 ore and 8 clay.
+  Each geode robot costs 3 ore and 12 obsidian.
 ```
 
 -   Remarques :
-    -   .
+    -   J'ai pensé à prendre le problème comme un problème de programmation linéaire (avec des contraintes et un objectif (maximiser le nombre de géode produites)) mais je n'ai pas réussi à l'implémenter (et je n'ai pas trouvé de solver de programmation linéaire en JavaScript) ;
+    -   Je passe ce problème (pour l'instant?).
 
 ---
 
