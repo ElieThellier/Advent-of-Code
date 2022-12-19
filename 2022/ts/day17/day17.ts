@@ -11,6 +11,7 @@ const timer = (
     return `${(end - start).toFixed(2)} ms`;
 };
 
+// can be refactored by reducing duplicate code
 const partOne = (input: string, totalRocks: number) => {
     const jet = fs
         .readFileSync(`./day17/inputs/${input}.in`, "utf-8")
