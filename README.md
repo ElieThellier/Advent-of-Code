@@ -325,7 +325,7 @@ Sensor at x=9, y=16: closest beacon is at x=10, y=16
 Sensor at x=13, y=2: closest beacon is at x=15, y=3
 ```
 
--   ## Remarques :
+-   Remarques :
     -   J'ai utilisé un tableau pour représenté la ligne de la partie 1 (avec un offset pour prendre en compte les points vu par le sensor en dehors de la grille (définie par les coordonnées des points extrémaux)), j'ai donc décalé tous les points sur une grille commençant à 0,0, il faut faire attention à redécaler les points pour le résultat de la partie 2 ;
     -   L'offset définie pour la partie 1 ne rend pas le programme adapté à tous les inputs, il faut donc le modifier pour chaque input ;
     -   Pour la partie 2, en premier essai, j'étais parti pour regarder tous les points de la grille 4000000x4000000 mais je me suis vite rendu compte que ça ne marcherai pas, ensuite je regardais pour tous les sensors, le carré autour de leur vision mais ça ne marchait pas non plus parce que trop de points. Enfin, j'ai regardé uniquement les points sur le cercle extérieur et ça a marché du premier coup.
@@ -419,18 +419,26 @@ Blueprint 2:
 
 ---
 
-## --- [Day 20: coming soon...](https://adventofcode.com/2022/day/20) ---
+## --- [Day 20: "Grove Positioning System"](https://adventofcode.com/2022/day/20) ---
 
 -   [Ma solution](./2022/ts/day20/day20.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+1
+2
+-3
+3
+-2
+0
+4
 ```
 
 -   Remarques :
-    -   .
+    -   Il faut faire attention au fait qu'il y ait des doublons dans le fichier, j'ai donc utilisé une liste pour les valeurs et une liste pour les indices (il est possible de factoriser ses deux listes en une seule). Pour chaque indice sur la liste de départ, je récupère l'indice de la liste d'indice modifiée qui à pour valeur celui de la liste de départ. Ensuite je modifie la liste d'indice puis la liste de valeur en respectant la condition de déplacement (si 3 est à la position 2 alors on le déplace à la position 3 + 2 = 5 (modulo la taille de la liste)) ;
+    -   Il faut aussi garder en tête que la liste est circulaire donc en affichant la liste, on n'obtient une rotation du résultat attendu sur l'énoncé du problème (car on déplace toute la liste en ajoutant une valeur) ;
+    -   J'ai appris à mettre des couleurs, surligner, souligner, ... dans le terminal, c'est bo.
 
 ---
 
