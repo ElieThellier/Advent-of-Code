@@ -2,14 +2,14 @@
 
 # &nbsp;[2022](./2022) - [AoC 2022](https://adventofcode.com/2022)
 
-Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.
+Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.  
 Si j'ai le temps, j'avancerai aussi sur les problèmes de l'AoC 2020 en Go.
 
 Languages choisis :
 
 -   TypeScript
 
-Pour afficher une solution : aller sous 2022/ts et lancer `npm install` puis `npm run dayXX`.
+Pour afficher une solution : aller sous 2022/ts (`cd 2022/ts`) et lancer `npm install` puis `npm run dayXX`.
 
 ---
 
@@ -315,7 +315,7 @@ abdefghi
 
 ## --- [Day 15: "Beacon Exclusion Zone"](https://adventofcode.com/2022/day/15) ---
 
--   [Ma solution](./2022/ts/day15/day15.ts)
+-   [Ma solution](./2022/ts/day15/day15.ts) // Peut ne pas fonctionner sur d'autres inputs à cause de l'offset utilisé (voir remarque)
 
 -   Exemple d'entrée :
 
@@ -347,8 +347,9 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 -   Remarques :
     -   Je passe ce problème pour l'instant car je n'ai pas le temps de le faire et il à l'air assez compliqué ;
-    -   Update : après avoir essayé plusieurs méthodes (bruteforce, BFS) que je n'ai par réussi à réellement implémenter, j'ai implémenté une méthode "naïve" qui consiste à choisir au hasard si on ouvre la valve ou si on change de tunnel (choisi aussi aléatoirement). J'éxécute cet algorithme un grand nombre de fois (10_000_000) et je calcule à chaque fois la pression libérée. Cette méthode me donne un borne inférieure de la pression libérée maximale par mon input (1605) -> résultat "too low" sur le site adventofcode. J'ai ensuite réduit l'intervalle de recherche en essayant 1650 (en pensant que ma méthode trouverait une valeur de pression libérée maximale assez proche de la réalité (car les pressions libérées par les valves sont assez faibles et car j'éxécute un grand nombre de fois)) -> résultat "too high". Il me restait donc 44 possibilités, j'ai donc essayé bêtement (pas si bêtement que ça car je continuais en même temps à lancer mon algorithme pour trouver une nouvelle borne inférieure donc c'était mieux de diminuer la borne supérieure) 1649 puis 1648 puis 1647 et 1647 était la bonne réponse !!
-    -   (Malheureusement pour ma 2ème étoile, je ne peux pas faire pareil pour la partie 2 car toutes mes valeurs trouvées sont "too low" (mais j'ai quand même trouvé une borne inférieure pour mon input de 1830)).
+    -   Update (19/12/22) : après avoir essayé plusieurs méthodes (bruteforce par BFS) que je n'ai par réussi à réellement implémenter, j'ai implémenté une méthode "naïve" qui consiste à choisir au hasard si on ouvre la valve ou si on change de tunnel (choisi aussi aléatoirement). J'éxécute cet algorithme un grand nombre de fois (10_000_000) et je calcule à chaque fois la pression libérée. Cette méthode me donne un borne inférieure de la pression libérée maximale par mon input (1605) -> résultat "too low" sur le site adventofcode. J'ai ensuite réduit l'intervalle de recherche en essayant 1650 (en pensant que ma méthode trouverait une valeur de pression libérée maximale assez proche de la réalité (car les pressions libérées par les valves sont assez faibles et car j'éxécute un grand nombre de fois)) -> résultat "too high". Il me restait donc 44 possibilités, j'ai donc essayé bêtement (pas si bêtement que ça car je continuais en même temps à lancer mon algorithme pour trouver une nouvelle borne inférieure donc c'était mieux de diminuer la borne supérieure) 1649 puis 1648 puis 1647 et 1647 était la bonne réponse !!
+    -   (Malheureusement pour ma 2ème étoile, je ne peux pas faire pareil pour la partie 2 car toutes mes valeurs trouvées sont "too low" (mais j'ai quand même trouvé une borne inférieure pour mon input de 1830)) ;
+    -   // TODO : écrire un programme bruteforce DFS comme celui de [hyper-neutrino](https://www.youtube.com/watch?v=bLMj50cpOug).
 
 ---
 
@@ -366,7 +367,8 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
     -   Pour la partie 1 de ce problème, je me suis d'abord inspiré de ma solution du day14 car le problème semblait équivalent mais l'ajout de jet de gaz m'empéchait de faire des fonctions récursives car j'avais besoin de stocker l'index du jet et de modifier le tableau. J'ai donc opter pour des boucles qui s'arrêtent quand la pierre ne doit plus tomber. (J'ai contourné le problème de déplacer la pierre avant d'essayer de la faire descendre en faisant une boucle while(true) et en faisant un break quand la pierre ne doit plus tomber). Le fait de travailler sur un tableau de toutes les colonnes m'a permis d'afficher facilement ce tableau en le transposant et donc de facilement trouver les conditions d'arrêt où de déplacement des pierres ;
     -   Le calcul de la hauteur de la tour a aussi été un argument pour faire des tableaux de colonnes, il suffisait alors de trouver la colonne la plus haute, c'est à dire la colonne qui possède le "#" le plus haut ;
     -   Pour la partie 2, je me suis vite rendu compte que changer 2022 en 1000000000000 ne marcherait pas (trop long + pb de mémoire). J'ai pensé à plusieurs solutions : trouver un pattern qui se répétait mais je n'ai pas réussi dans un premier temps. Ensuite, j'ai essayé de travailler sur un tableau plus petit et l'augmenter à chaque fois qu'une pierre se posait (et en même temps couper le bas du tableau) mais je n'ai pas réussi à l'implémenter. Enfin, je suis revenu sur la recherche de pattern en cherchant une astuce sur Internet, j'ai trouvé que la pierre en forme "-" était la clé pour trouver le pattern car c'est pas possible qu'une autre pierre de même forme passe en dessous d'elle. Le cycle trouvé correspond au position x de cette pierre et à l'index de jet dans la liste qui se répétent (ça se voit très bien sur l'exemple (cycle court) mais moins bien sur le puzzle (cycle long)). Il suffit alors de mesurer le nombre de pierre dans un cycle et la différence de hauteur de la tour en un cycle. Pour le calcul, on part du nombre de pierre souhaité et on soustrait le nombre de pierre avant le départ du cycle (nommé base), ensuite on divise (euclidienne) par le nombre de pierre dans un cycle (on garde le reste) et on multiplie par la hauteur sur un cycle. Enfin, on ajoute la hauteur correspondante au reste de la division et de la base ;
-    -   Je n'ai pas implémenté dans mon programme la recherche de pattern (= cycle), j'ai juste fait le calcul à la main.
+    -   Je n'ai pas implémenté dans mon programme la recherche de pattern (= cycle), j'ai juste fait le calcul à la main ;
+    -   // TODO (part2 ): implémenter la recherche de pattern.
 
 ---
 
@@ -395,7 +397,7 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 ## --- [Day 19: "Not Enough Minerals"](https://adventofcode.com/2022/day/19) ---
 
--   [Ma solution](./2022/ts/day19/day19.ts) // Ne résout pas le problème
+-   [Ma solution](./2022/ts/day19/day19.ts) // Trèèèès long et très inspiré (copié) de la solution de [jonathanpaulson](https://www.youtube.com/watch?v=yT3yHDp6hss)
 
 -   Exemple d'entrée :
 
@@ -415,7 +417,9 @@ Blueprint 2:
 
 -   Remarques :
     -   J'ai pensé à prendre le problème comme un problème de programmation linéaire (avec des contraintes et un objectif (maximiser le nombre de géode produites)) mais je n'ai pas réussi à l'implémenter (et je n'ai pas trouvé de solver de programmation linéaire en JavaScript) ;
-    -   Je passe ce problème (pour l'instant?).
+    -   Je passe ce problème (pour l'instant?) ;
+    -   Update (21/12/22) : Après avoir regardé plusieurs solutions (notamment celle de [jonathanpaulson](https://www.youtube.com/watch?v=yT3yHDp6hss) et celle de [hyper-neutrino](https://www.youtube.com/watch?v=H3PSODv4nf0)), lu beaucoup d'astuces sur le Reddit [adventofcode](https://www.reddit.com/r/adventofcode/comments/zpihwi/2022_day_19_solutions/) et avoir lu beaucoup de choses sur comment faire un algorithme "bruteforce" par BFS ou DFS, qu'est-ce que la mémoisation et la programmation dynamique. J'ai adapté ce que j'avais fait grâce à l'algorithme de jonathanpaulson et aux optimisations heuristiques ou logiques trouvées. Mon algorithme finit en 12min pour la partie 1 et presque 1h30 pour la partie 2. Je n'ai pas compris pourquoi ça prend autant de temps alors que celui de jonathanpaulson finit en moins d'une minute ;
+    -   On peut vraiment pas compter ce jour comme réussi car j'ai dû regarder la solution mais je retiens quand même la méthode de résolution (bruteforce par BFS ou DFS) et les optimisations heuristiques ou logiques trouvées.
 
 ---
 
@@ -460,7 +464,7 @@ lfqf: 4
 
 -   Remarques :
     -   Ma structure de données est la suivante : 1 dictionnaire (yelled) pour les singes qui crient des nombres et 1 dictionnaire (waiting) pour les singes qui ont des équations. Tant que waiting n'est pas vide, je résouds les équations possibles et j'ajoute dans yelled les nombres criés ;
-    -   Pour la partie 2, j'ai d'abord fait une dichotomie "à la main" en calculant le résultat des deux parties (gauche et droite) de l'équation de root pour une valeur de "humn" (notée "me") comprise entre 0 et 1000. Comme je n'obtenais pas de résultat, j'ai affiché la valeur de gauche-droite et je me suis rendu compte qu'elles étaient très éloignées donc j'ai changé les bornes inférieures et supérieures en tatonant (en sachant que si la différence obtenue diminuait quand me augmentait alors il fallait que j'augmente me et réciproquement). C'est donc comme ça que j'ai eu mon étoile ;
+    -   Pour la partie 2, j'ai d'abord fait une dichotomie "à la main" en calculant le résultat des deux parties (gauche et droite) de l'équation de root pour une valeur de "humn" (notée "me") comprise entre 0 et 1000. Comme je n'obtenais pas de résultat, j'ai affiché la valeur de gauche-droite et je me suis rendu compte qu'elles étaient très éloignées donc j'ai changé les bornes inférieures et supérieures en tatonant (en sachant que si la différence obtenue diminuait quand me augmentait alors il fallait que j'augmente me et réciproquement). Ca marche parce que la fonction est monotone de humn. C'est donc comme ça que j'ai eu mon étoile ;
     -   Ensuite, j'ai implémenté une vraie dichotomie (qui commence entre 0 et 10^20 (arbitrairement) pour être sûr que ça marche sur tous les inputs), elle s'arrête quand elle a trouvé la valeur de me qui vérifie l'équation de root. Cependant, il faut faire attention au sens de la dichotomie (le fait d'augmenter ou de diminuer me si la différence gauche-droite est positive ou négative). Pour ça, je regarde la première valeur de la différence, si celle-ci est positive, je sais que je dois diminuer me (car je travaille avec un me très grand de base) et ce pour tous les récursions suivantes, et réciproquement.
 
 ---
@@ -534,11 +538,11 @@ Languages choisis :
 -   js/ts (uniquement pour les premiers jours)
 -   Go
 
-Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts et lancer `npm install` puis `npm run dayXX`.  
+Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts (`cd 2020/js` ou `cd 2020/ts`) et lancer `npm install` puis `npm run dayXX`.  
 Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
 
 ---
 
-## &nbsp;&nbsp;&nbsp;// TO DO
+## &nbsp;&nbsp;&nbsp;// TODO : Liens + remarques sur AoC 2020 en Golang.
 
 ---
