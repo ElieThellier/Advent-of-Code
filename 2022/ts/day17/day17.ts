@@ -289,9 +289,9 @@ console.log("");
 // part2 : 1560919538573 not good
 
 console.log(
-    `PART 2 "example" : _1514285714288_ is the height of the tower of rocks after 1000000000000 rocks (not executed : done with seeking pattern and maths)`
+    `PART 2 "example" : _1514285714288_ is the height of the tower of rocks after 1_000_000_000_000 rocks (not executed : done with seeking pattern manually and maths)`
 );
 console.log(
-    `PART 2 "puzzle" : _1560919540245_ is the height of the tower of rocks after 1000000000000 rocks (not executed : done with seeking pattern and maths)`
+    `PART 2 "puzzle" : _1560919540245_ is the height of the tower of rocks after 1_000_000_000_000 rocks (not executed : done with seeking pattern manually and maths)`
 );
 console.log("");
