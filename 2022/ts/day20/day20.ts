@@ -38,6 +38,7 @@ const partsOneAndTwo = (input: string, part: number) => {
             // je peux refactoriser file et fileIndex en un seul objet
             moveEltInList(fileIndex, currI, currI + file[currI]); // on déplace l'index
             moveEltInList(file, currI, currI + file[currI]); // on déplace l'élément
+            //console.log(file.join(", "));
         }
         //console.log("iteration done", n);
         //console.log(file.join(", "));
@@ -57,11 +58,16 @@ const partsOneAndTwo = (input: string, part: number) => {
 
 // part2: 702836206498 too low
 
-console.log('\n--- Day 20: "Grove Positioning System" ---\n');
+console.log(
+    "%s \x1b[7m%s\x1b[0m %s",
+    "\n",
+    ' --- Day 20: "Grove Positioning System" --- ',
+    "\n"
+);
 ["example", "puzzle"].forEach((input) => {
     console.log(
         "\x1b[4m%s\x1b[0m \x1b[33m\x1b[7m%s\x1b[0m %s \x1b[31m%s\x1b[0m",
-        `PART 2 "${input}":`,
+        `PART 1 "${input}":`,
         `${partsOneAndTwo(input, 1)}`,
         `is the sum of the three numbers that form the grove coordinates (with only one mix of the encrypted file)`,
         `(executed in ${timer(partsOneAndTwo, input, 1)})`
