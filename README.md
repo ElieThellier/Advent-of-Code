@@ -442,18 +442,26 @@ Blueprint 2:
 
 ---
 
-## --- [Day 21: coming soon...](https://adventofcode.com/2022/day/21) ---
+## --- [Day 21: "Monkey Math"](https://adventofcode.com/2022/day/21) ---
 
 -   [Ma solution](./2022/ts/day21/day21.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+root: pppw + sjmn
+dbpl: 5
+cczh: sllz + lgvd
+zczc: 2
+ptdq: humn - dvpt
+dvpt: 3
+lfqf: 4
 ```
 
 -   Remarques :
-    -   .
+    -   Ma structure de données est la suivante : 1 dictionnaire (yelled) pour les singes qui crient des nombres et 1 dictionnaire (waiting) pour les singes qui ont des équations. Tant que waiting n'est pas vide, je résouds les équations possibles et j'ajoute dans yelled les nombres criés ;
+    -   Pour la partie 2, j'ai d'abord fait une dichotomie "à la main" en calculant le résultat des deux parties (gauche et droite) de l'équation de root pour une valeur de "humn" (notée "me") comprise entre 0 et 1000. Comme je n'obtenais pas de résultat, j'ai affiché la valeur de gauche-droite et je me suis rendu compte qu'elles étaient très éloignées donc j'ai changé les bornes inférieures et supérieures en tatonant (en sachant que si la différence obtenue diminuait quand me augmentait alors il fallait que j'augmente me et réciproquement). C'est donc comme ça que j'ai eu mon étoile ;
+    -   Ensuite, j'ai implémenté une vraie dichotomie (qui commence entre 0 et 10^20 (arbitrairement) pour être sûr que ça marche sur tous les inputs), elle s'arrête quand elle a trouvé la valeur de me qui vérifie l'équation de root. Cependant, il faut faire attention au sens de la dichotomie (le fait d'augmenter ou de diminuer me si la différence gauche-droite est positive ou négative). Pour ça, je regarde la première valeur de la différence, si celle-ci est positive, je sais que je dois diminuer me (car je travaille avec un me très grand de base) et ce pour tous les récursions suivantes, et réciproquement.
 
 ---
 
