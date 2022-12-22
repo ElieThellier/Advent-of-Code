@@ -471,7 +471,7 @@ lfqf: 4
 
 ## --- [Day 22: "Monkey Map"](https://adventofcode.com/2022/day/22) ---
 
--   [Ma solution](./2022/ts/day22/day22.ts)
+-   [Ma solution](./2022/ts/day22/day22.ts) // Ne fonctionne pas pour l'exemple et pour les inputs qui n'ont pas exactement la même forme que le mien
 
 -   Exemple d'entrée :
 
@@ -493,7 +493,10 @@ lfqf: 4
 ```
 
 -   Remarques :
-    -   .
+    -   Pour la première partie, j'ai simplement simulé les instructions sur la grille donnée ;
+    -   Pour la seconde partie, j'ai codé en dur les règles de déplacement spéciales quand on changé de face sur le cube. Ainsi, mon programme ne fonctionne que pour les inputs qui ont exactement la même forme que le mien (donc pas pour l'exemple) ;
+    -   J'ai aussi pris pas mal de temps à réfléchir à une solution générique mais je n'ai pas trouvé de solution ;
+    -   Deux petits points à faire attention : ne pas oublier de renvoyer la direction à la fin du déplacement (utile uniquement pour la deuxième partie) et ne pas oublier de bloquer le déplacement quand on arrive sur un mur '#'.
 
 ---
 
