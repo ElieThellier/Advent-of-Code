@@ -1,6 +1,6 @@
 # [Advent of code](https://adventofcode.com)
 
-# &nbsp;[2022](./2022) - [AoC 2022](https://adventofcode.com/2022)
+# &nbsp;[2022](./2022/ts) - [AoC 2022](https://adventofcode.com/2022)
 
 Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.  
 Si j'ai le temps, j'avancerai aussi sur les problèmes de l'AoC 2020 en Go.
@@ -9,7 +9,7 @@ Languages choisis :
 
 -   TypeScript
 
-Pour afficher une solution : aller sous 2022/ts (`cd 2022/ts`) et lancer `npm install` puis `npm run dayXX`.
+Pour afficher une solution : aller sous 2022/ts `(cd 2022/ts)` et lancer `npm install` puis `npm run dayXX`.
 
 ---
 
@@ -469,18 +469,34 @@ lfqf: 4
 
 ---
 
-## --- [Day 22: coming soon...](https://adventofcode.com/2022/day/22) ---
+## --- [Day 22: "Monkey Map"](https://adventofcode.com/2022/day/22) ---
 
--   [Ma solution](./2022/ts/day22/day22.ts)
+-   [Ma solution](./2022/ts/day22/day22.ts) // Ne fonctionne pas pour l'exemple et pour les inputs qui n'ont pas exactement la même forme que le mien
 
 -   Exemple d'entrée :
 
 ```
+        ...#
+        .#..
+        #...
+        ....
+...#.......#
+........#...
+..#....#....
+..........#.
+        ...#....
+        .....#..
+        .#......
+        ......#.
 
+10R5L5R10L4R5L5
 ```
 
 -   Remarques :
-    -   .
+    -   Pour la première partie, j'ai simplement simulé les instructions sur la grille donnée ;
+    -   Pour la seconde partie, j'ai codé en dur les règles de déplacement spéciales quand on changé de face sur le cube. Ainsi, mon programme ne fonctionne que pour les inputs qui ont exactement la même forme que le mien (donc pas pour l'exemple) ;
+    -   J'ai aussi pris pas mal de temps à réfléchir à une solution générique mais je n'ai pas trouvé de solution ;
+    -   Deux petits points à faire attention : ne pas oublier de renvoyer la direction à la fin du déplacement (utile uniquement pour la deuxième partie) et ne pas oublier de bloquer le déplacement quand on arrive sur un mur '#'.
 
 ---
 
@@ -538,7 +554,7 @@ Languages choisis :
 -   js/ts (uniquement pour les premiers jours)
 -   Go
 
-Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts (`cd 2020/js` ou `cd 2020/ts`) et lancer `npm install` puis `npm run dayXX`.  
+Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts `(cd 2020/js` ou `cd 2020/ts)` et lancer `npm install` puis `npm run dayXX`.  
 Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
 
 ---
