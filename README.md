@@ -335,6 +335,7 @@ Sensor at x=13, y=2: closest beacon is at x=15, y=3
 ## --- [Day 16: "Proboscidea Volcanium"](https://adventofcode.com/2022/day/16) ---
 
 -   [Ma solution](./2022/ts/day16/day16.ts) // Ne résout pas le problème (voir remarques)
+-   [Solution de hyper-neutrino](./2022/ts/day16/day16_2.ts) // voir : [hyper-neutrino](https://www.youtube.com/watch?v=bLMj50cpOug)
 
 -   Exemple d'entrée :
 
@@ -349,7 +350,8 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
     -   Je passe ce problème pour l'instant car je n'ai pas le temps de le faire et il à l'air assez compliqué ;
     -   Update (19/12/22) : après avoir essayé plusieurs méthodes (bruteforce par BFS) que je n'ai par réussi à réellement implémenter, j'ai implémenté une méthode "naïve" qui consiste à choisir au hasard si on ouvre la valve ou si on change de tunnel (choisi aussi aléatoirement). J'éxécute cet algorithme un grand nombre de fois (10_000_000) et je calcule à chaque fois la pression libérée. Cette méthode me donne un borne inférieure de la pression libérée maximale par mon input (1605) -> résultat "too low" sur le site adventofcode. J'ai ensuite réduit l'intervalle de recherche en essayant 1650 (en pensant que ma méthode trouverait une valeur de pression libérée maximale assez proche de la réalité (car les pressions libérées par les valves sont assez faibles et car j'éxécute un grand nombre de fois)) -> résultat "too high". Il me restait donc 44 possibilités, j'ai donc essayé bêtement (pas si bêtement que ça car je continuais en même temps à lancer mon algorithme pour trouver une nouvelle borne inférieure donc c'était mieux de diminuer la borne supérieure) 1649 puis 1648 puis 1647 et 1647 était la bonne réponse !!
     -   (Malheureusement pour ma 2ème étoile, je ne peux pas faire pareil pour la partie 2 car toutes mes valeurs trouvées sont "too low" (mais j'ai quand même trouvé une borne inférieure pour mon input de 1830)) ;
-    -   // TODO : écrire un programme bruteforce DFS comme celui de [hyper-neutrino](https://www.youtube.com/watch?v=bLMj50cpOug).
+    -   Update (22/12/22) : j'ai implémenté (copié ^^) la solution de hyper-neutrino, elle consiste en un DFS bruteforce avec un cache pour la mémoisation et quelques optimisations ;
+    -   Comme le jour 19, je ne peux pas compter ce jour comme réussi mais j'ai quand même appris beaucoup de choses (DFS, bitmask) en essayant de le résoudre et en regardant les solutions des autres.
 
 ---
 
@@ -419,7 +421,7 @@ Blueprint 2:
     -   J'ai pensé à prendre le problème comme un problème de programmation linéaire (avec des contraintes et un objectif (maximiser le nombre de géode produites)) mais je n'ai pas réussi à l'implémenter (et je n'ai pas trouvé de solver de programmation linéaire en JavaScript) ;
     -   Je passe ce problème (pour l'instant?) ;
     -   Update (21/12/22) : Après avoir regardé plusieurs solutions (notamment celle de [jonathanpaulson](https://www.youtube.com/watch?v=yT3yHDp6hss) et celle de [hyper-neutrino](https://www.youtube.com/watch?v=H3PSODv4nf0)), lu beaucoup d'astuces sur le Reddit [adventofcode](https://www.reddit.com/r/adventofcode/comments/zpihwi/2022_day_19_solutions/) et avoir lu beaucoup de choses sur comment faire un algorithme "bruteforce" par BFS ou DFS, qu'est-ce que la mémoisation et la programmation dynamique. J'ai adapté ce que j'avais fait grâce à l'algorithme de jonathanpaulson et aux optimisations heuristiques ou logiques trouvées. Mon algorithme finit en 12min pour la partie 1 et presque 1h30 pour la partie 2. Je n'ai pas compris pourquoi ça prend autant de temps alors que celui de jonathanpaulson finit en moins d'une minute ;
-    -   On peut vraiment pas compter ce jour comme réussi car j'ai dû regarder la solution mais je retiens quand même la méthode de résolution (bruteforce par BFS ou DFS) et les optimisations heuristiques ou logiques trouvées.
+    -   Je ne peux pas compter ce jour comme réussi car j'ai dû regarder la solution mais je retiens quand même la méthode de résolution (bruteforce par BFS) et les optimisations heuristiques ou logiques trouvées.
 
 ---
 
