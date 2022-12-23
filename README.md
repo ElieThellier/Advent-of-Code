@@ -502,14 +502,20 @@ lfqf: 4
 
 ---
 
-## --- [Day 23: coming soon...](https://adventofcode.com/2022/day/23) ---
+## --- [Day 23: "Unstable Diffusion"](https://adventofcode.com/2022/day/23) ---
 
 -   [Ma solution](./2022/ts/day23/day23.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+....#..
+..###.#
+#...#.#
+.#...##
+#.###..
+##.#.##
+.#..#..
 ```
 
 -   Remarques :
