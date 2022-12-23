@@ -520,7 +520,7 @@ lfqf: 4
 ```
 
 -   Remarques :
-    -   Ma partie 2 est assez lente (environ 40s) parce que j'utilise des dictionnaires de (75\*2+73)² = 54 900 positions et je compare chaque clé et valeur pour savoir si la position a changée (il y a facilement de meilleures solutions ^^) ;
+    -   Ma partie 2 est assez lente (environ 30s) parce que j'utilise des dictionnaires de (75\*2+73)² = 54 900 positions. Pour savoir si il y avait un changement de position, j'ai d'abord utilisé un dictionnaire temporaire qui stockait les positions précédentes et je comparais avec le dictionnaire acutel, mais j'ai changé pour un booléen qui indique si il y a eu un changement de position ou non (ça a fait gagné ~10s) ;
     -   J'avais commencé par utiliser un dictionnaire pour stocker les directions parce que j'avais mal lu l'énoncé, je pensais qu'on devait garder la direction de chaque elfe mais en fait c'est juste le cycle qui change (donc on peut utiliser juste un entier).
 
 ---
