@@ -497,6 +497,7 @@ lfqf: 4
 -   Remarques :
     -   Pour la première partie, j'ai simplement simulé les instructions sur la grille donnée ;
     -   Pour la seconde partie, j'ai codé en dur les règles de déplacement spéciales quand on changé de face sur le cube. Ainsi, mon programme ne fonctionne que pour les inputs qui ont exactement la même forme que le mien (donc pas pour l'exemple) ;
+    -   J'ai fabriqué un cube en papier avec les 6 faces et les positions (x et y) de chaque coin, ça permet de facilement voir le sens de sortie et aussi de trouver les relations entre chaques faces ;
     -   J'ai aussi pris pas mal de temps à réfléchir à une solution générique mais je n'ai pas trouvé de solution ;
     -   Deux petits points à faire attention : ne pas oublier de renvoyer la direction à la fin du déplacement (utile uniquement pour la deuxième partie) et ne pas oublier de bloquer le déplacement quand on arrive sur un mur '#'.
 
@@ -519,7 +520,8 @@ lfqf: 4
 ```
 
 -   Remarques :
-    -   .
+    -   Ma partie 2 est assez lente (environ 40s) parce que j'utilise des dictionnaires de (75\*2+73)² = 54 900 positions et je compare chaque clé et valeur pour savoir si la position a changée (il y a facilement de meilleures solutions ^^) ;
+    -   J'avais commencé par utiliser un dictionnaire pour stocker les directions parce que j'avais mal lu l'énoncé, je pensais qu'on devait garder la direction de chaque elfe mais en fait c'est juste le cycle qui change (donc on peut utiliser juste un entier).
 
 ---
 
