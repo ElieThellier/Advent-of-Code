@@ -46,7 +46,8 @@ const round = (
     positions: Map<string, boolean>,
     direction: number,
     height: number,
-    width: number
+    width: number,
+    stop: boolean
 ) => {
     let desiredPos = new Map();
     // first half of the round
@@ -147,22 +148,21 @@ const round = (
         positions.set(pos, true);
         positions.set(desired, false);
     }
-    return positions;
+    if (desiredPos.size === 0) stop = true;
+    return [positions, stop];
 };
 
 const partOne = (input: string) => {
     let [positions, offset, height, width] = parser(input, 1);
     let direction = 0; // direction 0 is north, 1 is south, 2 is west, 3 is east
+    let stop: any = false; // only for part 2
     let nRound = 10; // number of rounds
     for (let i = 0; i < nRound; i++) {
-        positions = round(positions, direction, height, width);
+        [positions, stop] = round(positions, direction, height, width, stop);
         direction = (i + 1) % 4; // direction 0 is north, 1 is south, 2 is west, 3 is east
     }
     // find minimal region
-    let minX = 2 * offset, // to be sure it is not always minimal
-        maxX = offset,
-        minY = 2 * offset,
-        maxY = offset;
+    let [minX, maxX, minY, maxY] = [2 * offset, offset, 2 * offset, offset]; // to be sure it is not always minimal
     for (let pos of positions.keys()) {
         let [y, x] = JSON.parse(pos);
         if (!positions.get(pos)) {
@@ -184,30 +184,16 @@ const partOne = (input: string) => {
     return result;
 };
 
-// return true if the two maps are totaly equal
-const compareMaps = (map1: any, map2: any) => {
-    let testVal;
-    if (map1.size !== map2.size) return false;
-    for (let [key, val] of map1) {
-        testVal = map2.get(key);
-        if (testVal !== val || testVal === undefined) return false;
-    }
-    return true;
-};
-
 const partTwo = (input: string) => {
     let [positions, _, height, width] = parser(input, 2);
     let direction = 0; // direction 0 is north, 1 is south, 2 is west, 3 is east
+    let stop: any = false;
     let nRound = 0; // count number of rounds
     while (true) {
-        let temp = new Map(); // keep track of the previous positions
-        positions.forEach((val: string, key: string) => {
-            temp.set(key, val);
-        });
-        positions = round(positions, direction, height, width);
+        [positions, stop] = round(positions, direction, height, width, stop);
         direction = (nRound + 1) % 4;
         nRound++;
-        if (compareMaps(temp, positions)) break;
+        if (stop) break;
     }
     return nRound;
 };
