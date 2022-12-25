@@ -200,6 +200,7 @@ const partTwo = (input: string) => {
 
 // part2 : 1070 too high (offset was too small)
 
+console.clear();
 console.log(
     "%s \x1b[7m%s\x1b[0m %s",
     "\n",

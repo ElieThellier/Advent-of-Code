@@ -1,19 +1,29 @@
-# [Advent of code](https://adventofcode.com)
+# [**Advent of Code**](https://adventofcode.com)
 
-# &nbsp;[2022](./2022/ts) - [AoC 2022](https://adventofcode.com/2022)
+# &nbsp;[**2022**](./2022/ts) **-** [**_AoC 2022_**](https://adventofcode.com/2022)
 
 Mon objectif est de réaliser tous les problèmes, si possible le jour de leur sortie.  
 Si j'ai le temps, j'avancerai aussi sur les problèmes de l'AoC 2020 en Go.
 
-Languages choisis :
+Language choisi :
 
--   TypeScript
+-   **TypeScript**
 
 Pour afficher une solution : aller sous 2022/ts `(cd 2022/ts)` et lancer `npm install` puis `npm run dayXX`.
 
+&nbsp;
+
+## &nbsp;&nbsp;&nbsp;<u>**Conclusion**</u> (écrit le 25/12/2022)
+
+&nbsp;&nbsp;&nbsp;Lors de ce mois de décembre 2022, j'ai consacré une (trop?) grande partie de mon temps à résoudre les problèmes de l'[Advent of Code](https://adventofcode.com/), une compétition internationale de programmation. Je ne regrette en aucun cas ces moments passés à apprendre le TypeScript, à coder, à aider les elfes, les singes et les éléphants, à lire les memes sur [Reddit](https://www.reddit.com/r/adventofcode/) et à voir comment les meilleurs (surtout [jonathanpaulson](https://www.youtube.com/@jonathanpaulson5053), [hyper-neutrino](https://www.youtube.com/@hyper-neutrino) et [betaveros](https://www.youtube.com/@betaveros)) s'attaquaient aux problèmes.  
+&nbsp;&nbsp;&nbsp;Mon objectif était de réaliser tous les problèmes et il est presque réussi, en effet je n'ai pas réussi à résoudre sans aides les problèmes des jours 16 et 19. Mais je reste satisfait d'avoir réussi à faire les problèmes le jour de leur sortie pour la plupart d'entre eux.  
+&nbsp;&nbsp;&nbsp;En plus de ça, je pense avoir beaucoup appris lors de cette aventure, nottament en JavaScript / TypeScript, mais aussi en programmation en général. Je retiens surtout l'algorithme BFS qui est essentiel pour l'exploration de graphe, ainsi que l'utilisation des dictionnaires et des ensembles que j'utilisais que trop peu.  
+&nbsp;&nbsp;&nbsp;Quand j'aurais le temps et l'envie, je compte bien continuer à résoudre les problèmes des AoC des années précédentes en Go.  
+&nbsp;&nbsp;&nbsp;Enfin, on se revoit en décembre prochain pour une nouvelle aventure ! =)
+
 ---
 
-## --- [Day 01: "Calorie Counting"](https://adventofcode.com/2022/day/1) ---
+## **_--- [Day 01: "Calorie Counting"](https://adventofcode.com/2022/day/1) ---_**
 
 -   [Ma solution](./2022/ts/day01/day01.ts)
 
@@ -35,7 +45,7 @@ Pour afficher une solution : aller sous 2022/ts `(cd 2022/ts)` et lancer `npm in
 
 ---
 
-## --- [Day 02: "Rock Paper Scissors"](https://adventofcode.com/2022/day/2) ---
+## **_--- [Day 02: "Rock Paper Scissors"](https://adventofcode.com/2022/day/2) ---_**
 
 -   [Ma solution](./2022/ts/day02/day02.ts)
 
@@ -52,7 +62,7 @@ C Z
 
 ---
 
-## --- [Day 03: "Rucksack Reorganization"](https://adventofcode.com/2022/day/3) ---
+## **_--- [Day 03: "Rucksack Reorganization"](https://adventofcode.com/2022/day/3) ---_**
 
 -   [Ma solution](./2022/ts/day03/day03.ts)
 
@@ -74,7 +84,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw
 
 ---
 
-## --- [Day 04: "Camp Cleanup"](https://adventofcode.com/2022/day/4) ---
+## **_--- [Day 04: "Camp Cleanup"](https://adventofcode.com/2022/day/4) ---_**
 
 -   [Ma solution](./2022/ts/day04/day04.ts)
 
@@ -94,7 +104,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw
 
 ---
 
-## --- [Day 05: "Supply Stacks"](https://adventofcode.com/2022/day/5) ---
+## **_--- [Day 05: "Supply Stacks"](https://adventofcode.com/2022/day/5) ---_**
 
 -   [Ma solution](./2022/ts/day05/day05.ts)
 
@@ -117,7 +127,7 @@ move 1 from 1 to 2
 
 ---
 
-## --- [Day 06: "Tuning Trouble"](https://adventofcode.com/2022/day/6) ---
+## **_--- [Day 06: "Tuning Trouble"](https://adventofcode.com/2022/day/6) ---_**
 
 -   [Ma solution](./2022/ts/day06/day06.ts)
 
@@ -133,7 +143,7 @@ bvwbjplbgvbhsrlpgdmjqwftvncz
 
 ---
 
-## --- [Day 07: "No Space Left On Device"](https://adventofcode.com/2022/day/7) ---
+## **_--- [Day 07: "No Space Left On Device"](https://adventofcode.com/2022/day/7) ---_**
 
 -   [Ma solution](./2022/ts/day07/day07.ts)
 
@@ -160,7 +170,7 @@ dir e
 
 ---
 
-## --- [Day 08: "Treetop Tree House"](https://adventofcode.com/2022/day/8) ---
+## **_--- [Day 08: "Treetop Tree House"](https://adventofcode.com/2022/day/8) ---_**
 
 -   [Ma solution](./2022/ts/day08/day08.ts)
 
@@ -180,7 +190,7 @@ dir e
 
 ---
 
-## --- [Day 09: "Rope Bridge"](https://adventofcode.com/2022/day/9) ---
+## **_--- [Day 09: "Rope Bridge"](https://adventofcode.com/2022/day/9) ---_**
 
 -   [Ma solution](./2022/ts/day09/day09.ts)
 
@@ -203,7 +213,7 @@ R 2
 
 ---
 
-## --- [Day 10: "Cathode-Ray Tube"](https://adventofcode.com/2022/day/10) ---
+## **_--- [Day 10: "Cathode-Ray Tube"](https://adventofcode.com/2022/day/10) ---_**
 
 -   [Ma solution](./2022/ts/day10/day10.ts)
 
@@ -220,7 +230,7 @@ addx -5
 
 ---
 
-## --- [Day 11: "Monkey in the Middle"](https://adventofcode.com/2022/day/11) ---
+## **_--- [Day 11: "Monkey in the Middle"](https://adventofcode.com/2022/day/11) ---_**
 
 -   [Ma solution](./2022/ts/day11/day11.ts)
 
@@ -249,7 +259,7 @@ Monkey 1:
 
 ---
 
-## --- [Day 12: "Hill Climbing Algorithm"](https://adventofcode.com/2022/day/12) ---
+## **_--- [Day 12: "Hill Climbing Algorithm"](https://adventofcode.com/2022/day/12) ---_**
 
 -   [Ma solution](./2022/ts/day12/day12.ts)
 
@@ -271,7 +281,7 @@ abdefghi
 
 ---
 
-## --- [Day 13: "Distress Signal"](https://adventofcode.com/2022/day/13) ---
+## **_--- [Day 13: "Distress Signal"](https://adventofcode.com/2022/day/13) ---_**
 
 -   [Ma solution](./2022/ts/day13/day13.ts)
 
@@ -297,7 +307,7 @@ abdefghi
 
 ---
 
-## --- [Day 14: "Regolith Reservoir"](https://adventofcode.com/2022/day/14) ---
+## **_--- [Day 14: "Regolith Reservoir"](https://adventofcode.com/2022/day/14) ---_**
 
 -   [Ma solution](./2022/ts/day14/day14.ts) // Peut ne pas fonctionner sur d'autres inputs à cause de l'offset utilisé (voir remarque)
 
@@ -313,7 +323,7 @@ abdefghi
 
 ---
 
-## --- [Day 15: "Beacon Exclusion Zone"](https://adventofcode.com/2022/day/15) ---
+## **_--- [Day 15: "Beacon Exclusion Zone"](https://adventofcode.com/2022/day/15) ---_**
 
 -   [Ma solution](./2022/ts/day15/day15.ts) // Peut ne pas fonctionner sur d'autres inputs à cause de l'offset utilisé (voir remarque)
 
@@ -332,7 +342,7 @@ Sensor at x=13, y=2: closest beacon is at x=15, y=3
 
 ---
 
-## --- [Day 16: "Proboscidea Volcanium"](https://adventofcode.com/2022/day/16) ---
+## **_--- [Day 16: "Proboscidea Volcanium"](https://adventofcode.com/2022/day/16) ---_**
 
 -   [Ma solution](./2022/ts/day16/day16.ts) // Ne résout pas le problème (voir remarques)
 -   [Solution de hyper-neutrino](./2022/ts/day16/day16_2.ts) // voir : [hyper-neutrino](https://www.youtube.com/watch?v=bLMj50cpOug)
@@ -355,7 +365,7 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 ---
 
-## --- [Day 17: "Pyroclastic Flow"](https://adventofcode.com/2022/day/17) ---
+## **_--- [Day 17: "Pyroclastic Flow"](https://adventofcode.com/2022/day/17) ---_**
 
 -   [Ma solution](./2022/ts/day17/day17.ts) // Ne résout pas la partie 2 du problème (voir remarques)
 
@@ -374,7 +384,7 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 ---
 
-## --- [Day 18: "Boiling Boulders"](https://adventofcode.com/2022/day/18) ---
+## **_--- [Day 18: "Boiling Boulders"](https://adventofcode.com/2022/day/18) ---_**
 
 -   [Ma solution](./2022/ts/day18/day18.ts)
 
@@ -397,7 +407,7 @@ Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 
 ---
 
-## --- [Day 19: "Not Enough Minerals"](https://adventofcode.com/2022/day/19) ---
+## **_--- [Day 19: "Not Enough Minerals"](https://adventofcode.com/2022/day/19) ---_**
 
 -   [Ma solution](./2022/ts/day19/day19.ts) // Trèèèès long et très inspiré (copié) de la solution de [jonathanpaulson](https://www.youtube.com/watch?v=yT3yHDp6hss)
 
@@ -425,7 +435,7 @@ Blueprint 2:
 
 ---
 
-## --- [Day 20: "Grove Positioning System"](https://adventofcode.com/2022/day/20) ---
+## **_--- [Day 20: "Grove Positioning System"](https://adventofcode.com/2022/day/20) ---_**
 
 -   [Ma solution](./2022/ts/day20/day20.ts)
 
@@ -448,7 +458,7 @@ Blueprint 2:
 
 ---
 
-## --- [Day 21: "Monkey Math"](https://adventofcode.com/2022/day/21) ---
+## **_--- [Day 21: "Monkey Math"](https://adventofcode.com/2022/day/21) ---_**
 
 -   [Ma solution](./2022/ts/day21/day21.ts)
 
@@ -471,7 +481,7 @@ lfqf: 4
 
 ---
 
-## --- [Day 22: "Monkey Map"](https://adventofcode.com/2022/day/22) ---
+## **_--- [Day 22: "Monkey Map"](https://adventofcode.com/2022/day/22) ---_**
 
 -   [Ma solution](./2022/ts/day22/day22.ts) // Ne fonctionne pas pour l'exemple et pour les inputs qui n'ont pas exactement la même forme que le mien
 
@@ -503,7 +513,7 @@ lfqf: 4
 
 ---
 
-## --- [Day 23: "Unstable Diffusion"](https://adventofcode.com/2022/day/23) ---
+## **_--- [Day 23: "Unstable Diffusion"](https://adventofcode.com/2022/day/23) ---_**
 
 -   [Ma solution](./2022/ts/day23/day23.ts)
 
@@ -520,55 +530,76 @@ lfqf: 4
 ```
 
 -   Remarques :
-    -   Ma partie 2 est assez lente (environ 30s) parce que j'utilise des dictionnaires de (75\*2+73)² = 54 900 positions. Pour savoir si il y avait un changement de position, j'ai d'abord utilisé un dictionnaire temporaire qui stockait les positions précédentes et je comparais avec le dictionnaire acutel, mais j'ai changé pour un booléen qui indique si il y a eu un changement de position ou non (ça a fait gagné ~10s) ;
+    -   Ma partie 2 est assez lente (environ 30s) parce que j'utilise des dictionnaires (Map) de (75\*2+73)² = 54 900 positions avec un offset pour représenter le tableau. Mais c'est pas très malin, j'aurais dû utiliser juste un ensemble (Set) pour la position uniquement des elfes et pas un dictionnaire avec la position de toutes les cases et le fait qu'elle soit libre ou non... (à changer donc) ;
+    -   Pour savoir si il y avait un changement de position, j'ai d'abord utilisé un dictionnaire temporaire qui stockait les positions précédentes et je comparais avec le dictionnaire acutel, mais j'ai changé pour un booléen qui indique si il y a eu un changement de position ou non (ça a fait gagné ~10s) ;
     -   J'avais commencé par utiliser un dictionnaire pour stocker les directions parce que j'avais mal lu l'énoncé, je pensais qu'on devait garder la direction de chaque elfe mais en fait c'est juste le cycle qui change (donc on peut utiliser juste un entier).
 
 ---
 
-## --- [Day 24: coming soon...](https://adventofcode.com/2022/day/24) ---
+## **_--- [Day 24: "Blizzard Basin"](https://adventofcode.com/2022/day/24) ---_**
 
 -   [Ma solution](./2022/ts/day24/day24.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+#.#####
+#.....#
+#>....#
+#.....#
+#...v.#
+#.....#
+#####.#
 ```
 
 -   Remarques :
-    -   .
+    -   Grâce à la formation des jours 16 et 19, j'ai réussi à faire le BFS tout seul mais il reste quand même assez long (5 minutes pour la partie 1 et 17 minutes pour la partie 2) ;
+    -   Dans un premier temps, j'ai voulu mettre les obstacles (blizzards) comme partie des noeuds du BFS mais je me suis ensuite rendu compte qu'il suffisait de calculer l'emplacement des obstacles à chaque minute ;
+    -   Pour la partie 2, j'ai lancé 3 fois le BFS pour le premier aller, le retour et le second aller (en mettant les blizzards à jour). Il y a problablement moyen de faire mieux et plus rapide mais ça marche comme ça ^^.
 
 ---
 
-## --- [Day 25: coming soon...](https://adventofcode.com/2022/day/25) ---
+## **_--- [Day 25: "Full of Hot Air"](https://adventofcode.com/2022/day/25) ---_**
 
 -   [Ma solution](./2022/ts/day25/day25.ts)
 
 -   Exemple d'entrée :
 
 ```
-
+1=-0-2
+12111
+2=0=
+21
+2=01
+111
+20012
+112
+1=-1=
+1-12
+12
+1=
+122
 ```
 
--   Remarques :
-    -   .
+-   Remarque :
+    -   Dans un premier temps, j'ai fait la conversion decimale en SNAFU à la main (et à la calculatrice) pour valider mon étoile et parce que j'avais pas vraiment le temps. Mais j'ai quand même implémenté la conversion en SNAFU après (il suffisait de coder les étapes que je faisais à la main).
 
 ---
 
 <br>
 
-# &nbsp;[2020](./2020) - [AoC 2020](https://adventofcode.com/2020)
+# &nbsp;[**2020**](./2020) **-** [**_AoC 2020_**](https://adventofcode.com/2020)
 
 Languages choisis :
 
 -   js/ts (uniquement pour les premiers jours)
--   Go
+-   **Go**
 
 Pour afficher une solution en js/ts : aller sous 2020/js ou 2020/ts `(cd 2020/js` ou `cd 2020/ts)` et lancer `npm install` puis `npm run dayXX`.  
 Pour afficher une solution en Go : aller sous 2020/go/dayXX et lancer `go run .` ou `go run dayXX.go`.
 
 ---
 
-## &nbsp;&nbsp;&nbsp;// TODO : Liens + remarques sur AoC 2020 en Golang.
+### &nbsp;&nbsp;&nbsp;// TODO : Liens + remarques sur AoC 2020 en Golang.
 
 ---
